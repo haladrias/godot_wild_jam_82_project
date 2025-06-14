@@ -1,0 +1,12 @@
+res://scenes/main.tscn
+res://scripts/main.gd
+res://scenes/portal.tscn
+res://scripts/portal.gd
+res://scripts/signal_bus.gd
+res://scripts/temp_player.gd
+res://scripts/input_component.gd
+res://scripts/movement_component.gd
+res://scenes/temp_player.tscn
+res://scenes/input_component.tscn
+res://scenes/movement_component.tscn
+res://scenes/game.tscn
