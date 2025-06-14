@@ -1,6 +1,8 @@
 RichTextLabel
-Timer
 CollisionShape2D
+CollisionPolygon2D
 Area2D
+Camera2D
+Timer
 Sprite2D
 CharacterBody2D
