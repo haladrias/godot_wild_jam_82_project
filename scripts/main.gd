@@ -9,7 +9,7 @@ func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("quit_game"):
 		print("Quitting game")
 		get_tree().quit()
-	if event.is_action_pressed("ui_filedialog_refresh"):
+	if event.is_action_pressed("restart_game"):
 		get_tree().reload_current_scene()
 
 func _ready() -> void:

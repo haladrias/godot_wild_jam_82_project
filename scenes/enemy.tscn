@@ -1,6 +1,6 @@
-[gd_scene load_steps=8 format=3 uid="uid://cglaqk4lp80eb"]
+[gd_scene load_steps=8 format=3 uid="uid://53qwx4khf5fi"]
 
-[ext_resource type="Script" uid="uid://detbyyynrens2" path="res://scripts/temp_player.gd" id="1_qc3fp"]
+[ext_resource type="Script" uid="uid://d278ked0oiuhy" path="res://scripts/enemy.gd" id="1_c4w8v"]
 [ext_resource type="Texture2D" uid="uid://u5lgy7gvemfw" path="res://assets/icon.svg" id="2_smlvt"]
 [ext_resource type="PackedScene" uid="uid://e2ounky2keb5" path="res://scenes/input_component.tscn" id="3_j5nhj"]
 [ext_resource type="PackedScene" uid="uid://d0hnxsi4dimdg" path="res://scenes/movement_component.tscn" id="4_ujyba"]
@@ -12,8 +12,8 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5nhj"]
 size = Vector2(64, 64)
 
-[node name="TempPlayer" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "detection_component") groups=["Player"]]
-script = ExtResource("1_qc3fp")
+[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "detection_component") groups=["Enemy"]]
+script = ExtResource("1_c4w8v")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
 detection_component = NodePath("DetectionComponent")
@@ -22,17 +22,19 @@ detection_component = NodePath("DetectionComponent")
 shape = SubResource("RectangleShape2D_h0i82")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-self_modulate = Color(0, 1, 1, 1)
+self_modulate = Color(1, 0.278431, 0.207843, 1)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_smlvt")
 
-[node name="Area2D" type="Area2D" parent="CollisionShape2D/Sprite2D" groups=["Player"]]
+[node name="Area2D" type="Area2D" parent="CollisionShape2D/Sprite2D" groups=["Enemy"]]
+visible = false
 rotation = 1.5708
 scale = Vector2(2, 2)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Sprite2D/Area2D"]
 shape = SubResource("RectangleShape2D_j5nhj")
+debug_color = Color(0, 0.6, 0.701961, 0.101961)
 
 [node name="InputComponent" parent="." instance=ExtResource("3_j5nhj")]
 
@@ -40,10 +42,8 @@ shape = SubResource("RectangleShape2D_j5nhj")
 
 [node name="DetectionComponent" parent="." instance=ExtResource("5_ujyba")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.8, 0.8)
-
 [node name="DebugLabel" type="RichTextLabel" parent="."]
+visible = false
 offset_left = -104.0
 offset_top = -72.0
 offset_right = 120.0

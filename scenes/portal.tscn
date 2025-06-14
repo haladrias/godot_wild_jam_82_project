@@ -15,11 +15,12 @@ self_modulate = Color(1, 1, 1, 0.309804)
 position = Vector2(542, 300)
 texture = ExtResource("2_jr6l0")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="Area2D" type="Area2D" parent="." groups=["Portal"]]
 position = Vector2(542, 300)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_d4jfq")
+debug_color = Color(2.83971e-06, 0.644661, 0.282626, 0.0784314)
 
 [node name="RescueTimer" type="Timer" parent="."]
 wait_time = 2.0
