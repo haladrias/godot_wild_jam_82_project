@@ -27,7 +27,7 @@ rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_smlvt")
 
-[node name="Area2D" type="Area2D" parent="CollisionShape2D/Sprite2D" groups=["Detectable", "Player"]]
+[node name="Area2D" type="Area2D" parent="CollisionShape2D/Sprite2D" groups=["Player"]]
 rotation = 1.5708
 scale = Vector2(2, 2)
 

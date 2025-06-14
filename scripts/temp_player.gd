@@ -9,6 +9,8 @@ extends CharacterBody2D
 func _ready() -> void:
 	detection_component.proximity_detection_triggered.connect(detected)
 	detection_component.proximity_detection_stopped.connect(not_detected)
+	detection_component.view_cone_detection_triggered.connect(detected)
+	detection_component.view_cone_detection_stopped.connect(not_detected)
 	DebugTools.update_debug_label(debug_label, "I don't see anything")
 
 

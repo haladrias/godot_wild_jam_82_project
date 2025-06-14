@@ -13,3 +13,4 @@ res://scripts/main.gd
 res://scripts/debug_tools.gd
 res://scenes/enemy.tscn
 res://scripts/enemy.gd
+res://scripts/detection_component.gd

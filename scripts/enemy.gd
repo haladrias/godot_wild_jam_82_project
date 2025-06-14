@@ -6,7 +6,8 @@ extends CharacterBody2D
 @onready var entity: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
-	detection_component.proximity_detection_triggered.connect(panic)
+	# detection_component.proximity_detection_triggered.connect(panic)
+	pass
 
 func _process(_delta):
 	#detection_component.set_view_cone_rotation(input_component.get_mouse_location())
