@@ -11,3 +11,10 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_tree().quit()
 	if event.is_action_pressed("ui_filedialog_refresh"):
 		get_tree().reload_current_scene()
+
+func _ready() -> void:
+	SignalBus.portal_timer_completed.connect(on_portal_timer_completed)
+
+func on_portal_timer_completed():
+	# TODO: Change to win screen
+	pass

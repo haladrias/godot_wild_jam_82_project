@@ -8,6 +8,7 @@ size = Vector2(132, 136)
 
 [node name="Portal" type="Node2D"]
 script = ExtResource("1_1ffj6")
+rescue_timer_duration = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.309804)
@@ -20,4 +21,28 @@ position = Vector2(542, 300)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
 shape = SubResource("RectangleShape2D_d4jfq")
 
+[node name="RescueTimer" type="Timer" parent="."]
+wait_time = 2.0
+one_shot = true
+
+[node name="RescueLabel" type="RichTextLabel" parent="."]
+visible = false
+offset_left = 456.0
+offset_top = 200.0
+offset_right = 640.0
+offset_bottom = 229.0
+text = "Time remaining: "
+fit_content = true
+vertical_alignment = 1
+
+[node name="DebugLabel" type="RichTextLabel" parent="."]
+offset_left = 456.0
+offset_top = 368.0
+offset_right = 624.0
+offset_bottom = 448.0
+fit_content = true
+vertical_alignment = 1
+
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="area_exited" from="Area2D" to="." method="_on_area_2d_area_exited"]
+[connection signal="timeout" from="RescueTimer" to="." method="_on_rescue_timer_timeout"]

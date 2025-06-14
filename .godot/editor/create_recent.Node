@@ -1,3 +1,5 @@
+RichTextLabel
+Timer
 CollisionShape2D
 Area2D
 Sprite2D
