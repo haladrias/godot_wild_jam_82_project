@@ -39,6 +39,7 @@ func update_rescue_label(time_left: float) -> void:
 
 func _on_area_2d_area_exited(area: Area2D) -> void:
 	if area.is_in_group("Player"):
+		SignalBus.player_left_portal.emit()
 		if rescue_timer != null:
 			stop_rescue_timer()
 			update_debug_label("Timer has been reset because player left portal")
