@@ -1,0 +1,16 @@
+res://scenes/temp_player.tscn
+res://scenes/main.tscn
+res://scenes/game.tscn
+res://scenes/portal.tscn
+res://scenes/input_component.tscn
+res://scenes/movement_component.tscn
+res://scripts/temp_player.gd
+res://scenes/view_component.tscn
+res://scripts/view_component.gd
+res://scenes/detection_component.tscn
+res://scripts/input_component.gd
+res://scripts/main.gd
+res://scripts/debug_tools.gd
+res://scenes/enemy.tscn
+res://scripts/enemy.gd
+res://scripts/detection_component.gd

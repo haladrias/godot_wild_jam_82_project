@@ -1,0 +1,27 @@
+[gd_scene load_steps=3 format=3 uid="uid://bwyv3npu3jfpg"]
+
+[ext_resource type="Script" uid="uid://bx6pplfd05xvy" path="res://scripts/detection_component.gd" id="1_dvnaf"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dvnaf"]
+radius = 96.0
+
+[node name="DetectionComponent" type="Node2D"]
+script = ExtResource("1_dvnaf")
+
+[node name="ViewCone" type="Area2D" parent="." groups=["ViewCone"]]
+rotation = 1.5708
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewCone"]
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 400, -700, -400, -700)
+
+[node name="ProximityArea" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityArea"]
+shape = SubResource("CircleShape2D_dvnaf")
+debug_color = Color(0, 0.6, 0.701961, 0.0784314)
+
+[connection signal="area_entered" from="ViewCone" to="." method="view_cone_detected"]
+[connection signal="area_exited" from="ViewCone" to="." method="view_cone_no_longer_detected"]
+[connection signal="area_entered" from="ProximityArea" to="." method="proximity_detected"]
+[connection signal="area_exited" from="ProximityArea" to="." method="proximity_no_longer_detected"]

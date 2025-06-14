@@ -1,0 +1,44 @@
+[gd_scene load_steps=8 format=3 uid="uid://cglaqk4lp80eb"]
+
+[ext_resource type="Script" uid="uid://detbyyynrens2" path="res://scripts/temp_player.gd" id="1_qc3fp"]
+[ext_resource type="Texture2D" uid="uid://u5lgy7gvemfw" path="res://assets/icon.svg" id="2_smlvt"]
+[ext_resource type="PackedScene" uid="uid://e2ounky2keb5" path="res://scenes/input_component.tscn" id="3_j5nhj"]
+[ext_resource type="PackedScene" uid="uid://d0hnxsi4dimdg" path="res://scenes/movement_component.tscn" id="4_ujyba"]
+[ext_resource type="PackedScene" uid="uid://bwyv3npu3jfpg" path="res://scenes/detection_component.tscn" id="5_ujyba"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_h0i82"]
+size = Vector2(64, 64)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_j5nhj"]
+size = Vector2(64, 64)
+
+[node name="TempPlayer" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "detection_component") groups=["Player"]]
+script = ExtResource("1_qc3fp")
+input_component = NodePath("InputComponent")
+movement_component = NodePath("MovementComponent")
+detection_component = NodePath("DetectionComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_h0i82")
+
+[node name="Area2D" type="Area2D" parent="." groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+shape = SubResource("RectangleShape2D_j5nhj")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 1, 1, 1)
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_smlvt")
+
+[node name="InputComponent" parent="." instance=ExtResource("3_j5nhj")]
+
+[node name="MovementComponent" parent="." instance=ExtResource("4_ujyba")]
+
+[node name="ViewCone" type="Area2D" parent="."]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewCone"]
+build_mode = 1
+polygon = PackedVector2Array(0, 0, 300, -500, -300, -500)
+
+[node name="DetectionComponent" parent="." instance=ExtResource("5_ujyba")]
