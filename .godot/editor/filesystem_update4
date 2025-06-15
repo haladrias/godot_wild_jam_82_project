@@ -9,3 +9,5 @@ res://scenes/enemy.tscn
 res://scripts/detection_component.gd
 res://scripts/enemy.gd
 res://scripts/global_constants.gd
+res://scripts/temp_player.gd
+res://scripts/signal_bus.gd

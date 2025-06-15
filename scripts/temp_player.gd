@@ -22,13 +22,13 @@ func _process(_delta):
 	return
 
 
-func detected(area):
+func detected(area: Area2D, _is_detecting: bool):
 	if area.is_in_group("Enemy"):
 		DebugTools.update_debug_label(debug_label, "There is an enemy nearby!")
 	if area.is_in_group("Portal"):
 		DebugTools.update_debug_label(debug_label, "I need to stay here to activate the portal!")
 
 
-func not_detected(area):
+func not_detected(area: Area2D, _is_detecting: bool):
 	if area.is_in_group("Enemy"):
 		DebugTools.update_debug_label(debug_label, "I think I lost them...")

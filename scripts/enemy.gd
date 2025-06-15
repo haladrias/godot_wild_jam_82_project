@@ -7,7 +7,9 @@ extends CharacterBody2D
 
 func _ready() -> void:
 	#detection_component.proximity_detection_triggered.connect(panic)
-	detection_component.view_cone_detection_triggered.connect(panic)
+	detection_component.view_cone_detection_triggered.connect(was_detected)
+	detection_component.view_cone_detection_stopped.connect(not_detected)
+	DebugTools.update_debug_label(debug_label, "I don't see anything")
 	pass
 
 func _process(_delta):
@@ -16,10 +18,11 @@ func _process(_delta):
 	#move_and_slide()
 	return
 
-func panic():
-	DebugTools.update_debug_label(debug_label, "I've been seen!")
+func was_detected(_area: Area2D, is_detecting: bool):
+	if is_detecting:
+		DebugTools.update_debug_label(debug_label, "I've been seen!")
 
 
-func _on_area_2d_area_entered(area: Area2D) -> void:
-	if area.is_in_group("PlayerDetector"):
-		panic()
+func not_detected(_area: Area2D, is_detecting: bool):
+	if !is_detecting:
+		DebugTools.update_debug_label(debug_label, "I'm no longer seen!")

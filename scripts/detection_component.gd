@@ -8,10 +8,10 @@ signal view_cone_detection_stopped
 
 
 @export var faction: GlobalConstants.FactionType
-
+@onready var debug_label: RichTextLabel = $DebugLabel
 @onready var view_cone: Area2D = $ViewCone
 @onready var proximity_area: Area2D = $ProximityArea
-
+@onready var is_detecting: bool = false
 @onready var collision_polygon_2d: CollisionPolygon2D = $ViewCone/CollisionPolygon2D
 var cone_direction: Vector2
 
@@ -43,10 +43,10 @@ var cone_direction: Vector2
 
 func _ready() -> void:
 	set_view_cone_polygon()
-	set_faction()
+	set_faction_groups()
 
 
-func set_faction():
+func set_faction_groups():
 	match faction:
 		GlobalConstants.FactionType.Player:
 			view_cone.add_to_group("PlayerDetector")
@@ -79,6 +79,7 @@ func set_view_cone_rotation(direction):
 
 func view_cone_detected(area: Area2D):
 	# TODO: Trigger seen behaviour
+	is_detecting = true
 	var direction = global_position.direction_to(area.global_position)
 	var facing_ratio = cone_direction.dot(direction)
 	var fov_ratio = cos(deg_to_rad(70))
@@ -86,26 +87,28 @@ func view_cone_detected(area: Area2D):
 		match faction:
 			GlobalConstants.FactionType.Player:
 				if area.is_in_group("Enemy"):
-					print("In field of vision")
-					print(fov_ratio)
-					view_cone_detection_triggered.emit(area)
+					DebugTools.update_debug_label(debug_label,"Enemy detected")
+					view_cone_detection_triggered.emit(area, is_detecting)
 			GlobalConstants.FactionType.Enemy:
 				if area.is_in_group("Player"):
 					print("Player detected")
-					view_cone_detection_triggered.emit(area)
+					view_cone_detection_triggered.emit(area, is_detecting)
 	else:
 		print("Not in field of vision")
 
 
 func view_cone_no_longer_detected(area: Area2D):
+	is_detecting = false
 	if area.is_in_group("Enemy"):
-		view_cone_detection_stopped.emit(area)
-		print("Lost sight of enemy")
+		view_cone_detection_stopped.emit(area, is_detecting)
+		DebugTools.update_debug_label(debug_label,"Enemy lost")
 
 
 func proximity_detected(area: Area2D):
-	proximity_detection_triggered.emit(area)
+	is_detecting = true
+	proximity_detection_triggered.emit(area, is_detecting)
 
 
 func proximity_no_longer_detected(area: Area2D):
-	proximity_detection_stopped.emit(area)
+	is_detecting = false
+	proximity_detection_stopped.emit(area, is_detecting)
