@@ -16,7 +16,7 @@ size = Vector2(64, 64)
 script = ExtResource("1_qc3fp")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
-detection_component = NodePath("DetectionComponent")
+detection_component = NodePath("CollisionShape2D/DetectionComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h0i82")
@@ -27,18 +27,20 @@ rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_smlvt")
 
-[node name="Area2D" type="Area2D" parent="CollisionShape2D/Sprite2D" groups=["Detectable", "Player"]]
-rotation = 1.5708
-scale = Vector2(2, 2)
+[node name="DetectionComponent" parent="CollisionShape2D" instance=ExtResource("5_ujyba")]
+faction = 0
+cone_resolution = 20
+cone_radius = 300.0
+cone_angle = 90.0
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Sprite2D/Area2D"]
+[node name="Area2D" type="Area2D" parent="CollisionShape2D/DetectionComponent" groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/DetectionComponent/Area2D"]
 shape = SubResource("RectangleShape2D_j5nhj")
 
 [node name="InputComponent" parent="." instance=ExtResource("3_j5nhj")]
 
 [node name="MovementComponent" parent="." instance=ExtResource("4_ujyba")]
-
-[node name="DetectionComponent" parent="." instance=ExtResource("5_ujyba")]
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(0.8, 0.8)

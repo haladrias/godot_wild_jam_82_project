@@ -9,7 +9,6 @@ radius = 96.0
 script = ExtResource("1_dvnaf")
 
 [node name="ViewCone" type="Area2D" parent="." groups=["ViewCone"]]
-rotation = 1.5708
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewCone"]
 build_mode = 1
