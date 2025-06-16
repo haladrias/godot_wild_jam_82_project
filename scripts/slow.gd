@@ -30,7 +30,7 @@ func apply_slow() -> void:
 	if movement.speed <= 200:
 		return
 	movement.speed -= 200
-	ailment_active = true
+	#ailment_active = true
 	print("slowed")
 	pass
 
