@@ -7,14 +7,22 @@ radius = 96.0
 
 [node name="DetectionComponent" type="Node2D"]
 script = ExtResource("1_dvnaf")
+cone_resolution = 3
+cone_radius = 350.0
 
 [node name="ViewCone" type="Area2D" parent="." groups=["ViewCone"]]
+collision_layer = 128
+collision_mask = 128
+monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewCone"]
-build_mode = 1
-polygon = PackedVector2Array(0, 0, 400, -700, -400, -700)
+polygon = PackedVector2Array(0, 0, 247.487, -247.487, 338.074, -90.5867, 338.074, 90.5867, 247.487, 247.487)
 
 [node name="ProximityArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 128
+collision_mask = 128
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityArea"]
 shape = SubResource("CircleShape2D_dvnaf")
