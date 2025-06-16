@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cglaqk4lp80eb"]
+[gd_scene load_steps=10 format=3 uid="uid://cglaqk4lp80eb"]
 
 [ext_resource type="Script" uid="uid://detbyyynrens2" path="res://scripts/temp_player.gd" id="1_qc3fp"]
 [ext_resource type="Texture2D" uid="uid://u5lgy7gvemfw" path="res://assets/icon.svg" id="2_smlvt"]
@@ -12,6 +12,10 @@ size = Vector2(64, 64)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5nhj"]
 size = Vector2(64, 64)
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_a17a3"]
+radius = 8.0
+height = 16.0
 
 [node name="TempPlayer" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "detection_component") groups=["Player"]]
 script = ExtResource("1_qc3fp")
@@ -54,3 +58,7 @@ vertical_alignment = 1
 
 [node name="Node2D" parent="." node_paths=PackedStringArray("movement") instance=ExtResource("6_a17a3")]
 movement = NodePath("../MovementComponent")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Node2D"]
+shape = SubResource("CapsuleShape2D_a17a3")
+debug_color = Color(0.85906, 0.363337, 5.77569e-07, 0.42)

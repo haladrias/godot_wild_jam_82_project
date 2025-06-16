@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://cgk3hcnxqg4l2"]
+[gd_scene load_steps=4 format=3 uid="uid://cgk3hcnxqg4l2"]
 
 [ext_resource type="PackedScene" uid="uid://fvpldi3fxw26" path="res://scenes/slow_area.tscn" id="2_iuir6"]
 [ext_resource type="PackedScene" uid="uid://cglaqk4lp80eb" path="res://scenes/temp_player.tscn" id="3_5v6yl"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_iuir6"]
+radius = 173.026
 
 [node name="interaction_testing" type="Node2D"]
 
@@ -10,3 +13,8 @@ position = Vector2(186, 363)
 
 [node name="slow_area" parent="." instance=ExtResource("2_iuir6")]
 position = Vector2(389, 26)
+status_ailment = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="slow_area"]
+position = Vector2(106, 214)
+shape = SubResource("CircleShape2D_iuir6")

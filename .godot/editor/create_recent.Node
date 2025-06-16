@@ -1,6 +1,6 @@
 CollisionShape2D
-Label
 Area2D
+Label
 RichTextLabel
 CollisionPolygon2D
 Camera2D

@@ -1,9 +1,9 @@
-extends Node2D
+extends Area2D
 class_name Slow
 
-var max_time : float = 10.0
-var _timer : float = 10.0
-var parent : Node2D
+var max_time : float = 3.0
+var _timer : float = 3.0
+var parent : CharacterBody2D
 var ailment_active : bool = false
 
 @export var slowed  = 0.5
@@ -11,22 +11,22 @@ var ailment_active : bool = false
 @export var movement : Node2D
 
 func _ready() -> void:
-	#parent = get_parent().get_node("res://scenes/movement_component.tscn")
-	AilmentTrigger.player_entered.connect(apply)
+	parent = get_parent()
+	#AilmentTrigger.player_entered.connect(apply)
 	#AilmentTrigger.player_exited.connect(remove)
-	
+	pass
 
 func _process(_delta: float) -> void:
 	if ailment_active == false:
 		return
 	if _timer <= 0:
-		remove()
+		remove_stun()
 		return
 	_timer -= _delta
 	
 	print(_timer)
 
-func apply() -> void:
+func apply_slow() -> void:
 	if movement.speed <= 200:
 		return
 	movement.speed -= 200
@@ -34,11 +34,32 @@ func apply() -> void:
 	print("slowed")
 	pass
 
-
+func apply_stun()-> void:
+	movement.speed = 0
+	ailment_active = true
 
 func remove() -> void:
 	movement.speed = normal_speed
-	_timer = max_time
+	
 	ailment_active = false
 	print("slow removed")
 	pass
+
+func remove_stun() -> void:
+	movement.speed = normal_speed
+	_timer = max_time
+	ailment_active = false
+	pass
+
+func _on_area_entered(area: trigger) -> void:
+	if area is trigger:
+		if AilmentManager.ailment == 1:
+			apply_slow()
+		elif AilmentManager.ailment == 2:
+			await get_tree().create_timer(0.5).timeout
+			apply_stun()
+
+
+func _on_area_exited(_area: trigger) -> void:
+	if _area is trigger:
+		remove()
