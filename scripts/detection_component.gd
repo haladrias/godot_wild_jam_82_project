@@ -1,44 +1,87 @@
 @tool
 extends Node2D
 class_name DetectionComponent
-signal proximity_detection_triggered
-signal proximity_detection_stopped
-signal view_cone_detection_triggered
-signal view_cone_detection_stopped
+
+signal view_cone_detection_triggered(body: PhysicsBody2D)
+signal view_cone_detection_stopped(body: PhysicsBody2D)
+## Proximity signals to be used for optimization; only begin rapid polling when entering the proximity area
+# signal proximity_detection_triggered
+# signal proximity_detection_stopped
 
 
 @export var faction: GlobalConstants.FactionType
-@onready var debug_label: RichTextLabel = $DebugLabel
 @onready var view_cone: Area2D = $ViewCone
 @onready var proximity_area: Area2D = $ProximityArea
-@onready var is_detecting: bool = false
 @onready var collision_polygon_2d: CollisionPolygon2D = $ViewCone/CollisionPolygon2D
-var cone_direction: Vector2
+
+# This dictionary will store the bodies we are currently detecting in our FOV.
+# We use a dictionary for fast lookups. The value can be `true` or the body itself.
+var _bodies_in_fov: Dictionary = {}
+
 
 @export_group("ViewCone Properties")
-@export var cone_resolution: int = 20:
+@export var cone_resolution: int = 5:
 	set(value):
 		cone_resolution = max(value, 3)
 		if is_node_ready():
 			set_view_cone_polygon()
-			print("Cone resolution updated to: " + str(cone_resolution))
 
 @export_range(100.0, 1000.0, 50.0) var cone_radius: float = 300.0:
 	set(value):
 		cone_radius = value
-		# If the node is ready, update the shape.
 		if is_node_ready():
 			set_view_cone_polygon()
-			print("Cone length updated to: " + str(cone_radius))
 
-@export_range(5.0, 360.0, 5.0) var cone_angle: float = 90.0:
+## The angle of the cone in degrees. NOTE: max value is 300. Default 90, min 5.
+@export_range(5.0, 300.0, 5.0) var cone_angle: float = 90.0:
 	set(value):
-		cone_angle = clamp(value, 20.0, 360.0)
-		# If the node is ready, update the shape.
+		cone_angle = clamp(value, 20.0, 300.0)
 		if is_node_ready():
 			set_view_cone_polygon()
-			print("Cone angle updated to: " + str(cone_angle))
 
+
+func _physics_process(_delta: float) -> void:
+	# TODO: Optimize by adding logic to only run view_cone_detection() when an entity is in the proximity area
+	view_cone_detection()
+
+
+func view_cone_detection():
+	# Ignore logic if the game is running in the editor
+	if Engine.is_editor_hint():
+		return
+
+	# This dictionary will hold all bodies that are valid targets THIS frame.
+	var current_bodies_in_fov: Dictionary = {}
+
+	# Get all bodies currently inside the cone's physical Area2D shape.
+	var overlapping_bodies = view_cone.get_overlapping_bodies()
+
+	# Loop through them and perform FOV check.
+	for body in overlapping_bodies:
+		#? Add a check to filter by faction or group membership
+		var direction_to_target = global_position.direction_to(body.global_position)
+		var forward_vector = global_transform.x
+		var facing_ratio = forward_vector.dot(direction_to_target)
+		var fov_ratio = cos(deg_to_rad(cone_angle / 2.0))
+		# If the body passes the FOV check, add it to the list of current detections.
+		if facing_ratio > fov_ratio:
+			current_bodies_in_fov[body] = true
+
+	# Check for newly detected bodies
+	for body in current_bodies_in_fov:
+		if not _bodies_in_fov.has(body):
+			# New detection if body is in the current list but wasn't in the previous frame's.
+			print("NEW DETECTION: ", body.name)
+			view_cone_detection_triggered.emit(body)
+
+	# Check for lost bodies
+	for body in _bodies_in_fov:
+		if not current_bodies_in_fov.has(body):
+			print("LOST SIGHT OF: ", body.name)
+			view_cone_detection_stopped.emit(body)
+
+	# Update state for the next frame.
+	_bodies_in_fov = current_bodies_in_fov
 
 
 func _ready() -> void:
@@ -46,19 +89,7 @@ func _ready() -> void:
 	set_faction_groups()
 
 
-func set_faction_groups():
-	match faction:
-		GlobalConstants.FactionType.Player:
-			view_cone.add_to_group("PlayerDetector")
-			proximity_area.add_to_group("PlayerDetector")
-		GlobalConstants.FactionType.Enemy:
-			view_cone.add_to_group("EnemyDetector")
-			proximity_area.add_to_group("EnemyDetector")
-
-
-
 func set_view_cone_polygon():
-# This function uses cone_radius and cone_angle to create a polygon to use as the view cone collider.
 	if not is_node_ready():
 		return
 	var polygon_points: Array[Vector2] = [Vector2.ZERO]
@@ -72,43 +103,12 @@ func set_view_cone_polygon():
 	collision_polygon_2d.polygon = polygon_points
 
 
-func set_view_cone_rotation(direction):
-	look_at(direction)
-	cone_direction = direction
-
-
-func view_cone_detected(area: Area2D):
-	# TODO: Trigger seen behaviour
-	is_detecting = true
-	var direction = global_position.direction_to(area.global_position)
-	var facing_ratio = cone_direction.dot(direction)
-	var fov_ratio = cos(deg_to_rad(70))
-	if facing_ratio > fov_ratio:
-		match faction:
-			GlobalConstants.FactionType.Player:
-				if area.is_in_group("Enemy"):
-					DebugTools.update_debug_label(debug_label,"Enemy detected")
-					view_cone_detection_triggered.emit(area, is_detecting)
-			GlobalConstants.FactionType.Enemy:
-				if area.is_in_group("Player"):
-					print("Player detected")
-					view_cone_detection_triggered.emit(area, is_detecting)
-	else:
-		print("Not in field of vision")
-
-
-func view_cone_no_longer_detected(area: Area2D):
-	is_detecting = false
-	if area.is_in_group("Enemy"):
-		view_cone_detection_stopped.emit(area, is_detecting)
-		DebugTools.update_debug_label(debug_label,"Enemy lost")
-
-
-func proximity_detected(area: Area2D):
-	is_detecting = true
-	proximity_detection_triggered.emit(area, is_detecting)
-
-
-func proximity_no_longer_detected(area: Area2D):
-	is_detecting = false
-	proximity_detection_stopped.emit(area, is_detecting)
+func set_faction_groups():
+	# Can use this to filter out bodies based on factions defined in GlobalConstants.gd (based on group membership)
+	match faction:
+		GlobalConstants.FactionType.Player:
+			view_cone.add_to_group("PlayerDetector")
+			proximity_area.add_to_group("PlayerDetector")
+		GlobalConstants.FactionType.Enemy:
+			view_cone.add_to_group("EnemyDetector")
+			proximity_area.add_to_group("EnemyDetector")

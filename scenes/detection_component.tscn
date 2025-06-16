@@ -7,36 +7,26 @@ radius = 96.0
 
 [node name="DetectionComponent" type="Node2D"]
 script = ExtResource("1_dvnaf")
-cone_resolution = 6
+cone_resolution = 3
+cone_radius = 350.0
 
 [node name="ViewCone" type="Area2D" parent="." groups=["ViewCone"]]
+collision_layer = 128
+collision_mask = 128
+monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewCone"]
-polygon = PackedVector2Array(0, 0, 212.132, -212.132, 259.808, -150, 289.778, -77.6457, 300, 0, 289.778, 77.6457, 259.808, 150, 212.132, 212.132)
+polygon = PackedVector2Array(0, 0, 247.487, -247.487, 338.074, -90.5867, 338.074, 90.5867, 247.487, 247.487)
 
 [node name="ProximityArea" type="Area2D" parent="."]
+visible = false
+collision_layer = 128
+collision_mask = 128
+monitorable = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ProximityArea"]
 shape = SubResource("CircleShape2D_dvnaf")
 debug_color = Color(0, 0.6, 0.701961, 0.0784314)
-
-[node name="DebugLabel" type="RichTextLabel" parent="."]
-anchors_preset = 7
-anchor_left = 0.5
-anchor_top = 1.0
-anchor_right = 0.5
-anchor_bottom = 1.0
-offset_left = -112.0
-offset_top = -53.0
-offset_right = 112.0
-offset_bottom = -30.0
-grow_horizontal = 2
-grow_vertical = 0
-size_flags_horizontal = 4
-text = "Filler text"
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
 
 [connection signal="area_entered" from="ViewCone" to="." method="view_cone_detected"]
 [connection signal="area_exited" from="ViewCone" to="." method="view_cone_no_longer_detected"]

@@ -58,6 +58,11 @@ restart_game={
 ]
 }
 
+[layer_names]
+
+2d_physics/layer_7="PlayerDetection"
+2d_physics/layer_8="EnemyDetection"
+
 [rendering]
 
 renderer/rendering_method="gl_compatibility"

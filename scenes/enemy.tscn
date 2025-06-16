@@ -13,6 +13,7 @@ size = Vector2(64, 64)
 size = Vector2(64, 64)
 
 [node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "detection_component") groups=["Enemy"]]
+collision_layer = 129
 script = ExtResource("1_c4w8v")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
@@ -28,9 +29,12 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_smlvt")
 
 [node name="DetectionComponent" parent="CollisionShape2D" instance=ExtResource("5_ujyba")]
-faction = 1
+cone_resolution = 20
+cone_radius = 300.0
 
 [node name="Area2D" type="Area2D" parent="CollisionShape2D/DetectionComponent" groups=["Detectable", "Enemy"]]
+collision_layer = 128
+collision_mask = 128
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/DetectionComponent/Area2D"]
 shape = SubResource("RectangleShape2D_j5nhj")
