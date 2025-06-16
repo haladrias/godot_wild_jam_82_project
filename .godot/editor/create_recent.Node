@@ -1,6 +1,7 @@
+CollisionShape2D
+Label
 Area2D
 RichTextLabel
-CollisionShape2D
 CollisionPolygon2D
 Camera2D
 Timer

@@ -1,0 +1,12 @@
+[gd_scene load_steps=3 format=3 uid="uid://cgk3hcnxqg4l2"]
+
+[ext_resource type="PackedScene" uid="uid://fvpldi3fxw26" path="res://scenes/slow_area.tscn" id="2_iuir6"]
+[ext_resource type="PackedScene" uid="uid://cglaqk4lp80eb" path="res://scenes/temp_player.tscn" id="3_5v6yl"]
+
+[node name="interaction_testing" type="Node2D"]
+
+[node name="TempPlayer" parent="." instance=ExtResource("3_5v6yl")]
+position = Vector2(186, 363)
+
+[node name="slow_area" parent="." instance=ExtResource("2_iuir6")]
+position = Vector2(389, 26)

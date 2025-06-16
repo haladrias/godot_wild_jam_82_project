@@ -41,9 +41,6 @@ debug_color = Color(0, 0.6, 0.701961, 0.101961)
 
 [node name="DetectionComponent" parent="." instance=ExtResource("5_ujyba")]
 faction = 1
-cone_resolution = 20
-cone_radius = 300.0
-cone_angle = 90.0
 
 [node name="DebugLabel" type="RichTextLabel" parent="."]
 offset_left = -104.0
