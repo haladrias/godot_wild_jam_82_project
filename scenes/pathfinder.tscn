@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://dfuqtphi1rnid"]
+
+[ext_resource type="Script" uid="uid://beqmah0h4km7x" path="res://scenes/pathfinding.gd" id="1_jqfsq"]
+
+[node name="pathfinding" type="Node2D"]
+script = ExtResource("1_jqfsq")
+
+[node name="Line2D" type="Line2D" parent="."]
+width = 4.0
+default_color = Color(0.853743, 0.853744, 1.15514e-06, 1)
