@@ -7,6 +7,7 @@ func _ready() -> void:
 	detection_component.view_cone_detection_triggered.connect(detected)
 	detection_component.view_cone_detection_stopped.connect(not_detected)
 	DebugTools.update_debug_label(debug_label, "I don't see anything")
+	SignalBus.debug_spacebar_pressed.connect(debug_movement)
 	pass
 
 func _process(_delta):
@@ -16,8 +17,7 @@ func _process(_delta):
 	#pathfinder.update_path(vector2i_position())
 	pathfinder.update_entity_position(global_position)
 	pathfinder.update_path()
-	debug_movement()
 	return
 
 func debug_movement():
-	self.position.x += 1
+	self.position.x += 50

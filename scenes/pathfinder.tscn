@@ -4,7 +4,6 @@
 
 [node name="pathfinding" type="Node2D"]
 script = ExtResource("1_jqfsq")
-cell_size = Vector2i(32, 32)
 
 [node name="Line2D" type="Line2D" parent="."]
 width = 4.0
