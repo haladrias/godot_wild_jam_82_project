@@ -16,4 +16,8 @@ func _process(_delta):
 	#pathfinder.update_path(vector2i_position())
 	pathfinder.update_entity_position(global_position)
 	pathfinder.update_path()
+	debug_movement()
 	return
+
+func debug_movement():
+	self.position.x += 1

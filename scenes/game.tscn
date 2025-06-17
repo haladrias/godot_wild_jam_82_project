@@ -8,14 +8,10 @@
 [node name="Game" type="Node2D"]
 script = ExtResource("1_uwrxv")
 
-[node name="Panel" type="Panel" parent="."]
-offset_right = 1152.0
-offset_bottom = 648.0
-
 [node name="Portal" parent="." instance=ExtResource("3_lbhrr")]
 
 [node name="Enemy" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(1064, 72)
+position = Vector2(144, 432)
 
 [node name="Player" parent="." instance=ExtResource("2_lnu2h")]
 position = Vector2(720, 408)
