@@ -1,30 +1,23 @@
 extends Area2D
-class_name trigger
+class_name slow_zone
 
+@export_category("ailment and target")
 @export var status_ailment : int = 1
+@export var target : int#1 is player, 2 is enemy
 
-
-#signal player_entered
-#signal player_exited
-#signal enemy_entered
-#signal enemy_exited
-#
-#@onready var area_2d: Area2D = $Area2D
-#
 func _ready() -> void:
 	AilmentManager.ailment = status_ailment
+	AilmentManager.target = target
 	#pass
 #
-#func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
-	#if body.is_in_group("Player"):
-		#player_entered.emit()
-	#else:
-		#enemy_entered.emit()
-	
+func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
+	if body. is_in_group("Player"):
+		AilmentManager.entered.emit()
+		print("entered")
+	pass
 
 
-#func _on_area_2d_area_exited(body : CharacterBody2D) -> void:
-	#if body.is_in_group("Player"):
-		#player_exited.emit()
-	#else:
-		#enemy_exited.emit()
+func _on_area_2d_area_exited(body : CharacterBody2D) -> void:
+	if body.is_in_group("Player"):
+		AilmentManager.exited.emit()
+	pass

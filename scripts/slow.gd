@@ -12,8 +12,7 @@ var ailment_active : bool = false
 
 func _ready() -> void:
 	parent = get_parent()
-	#AilmentTrigger.player_entered.connect(apply)
-	#AilmentTrigger.player_exited.connect(remove)
+	
 	pass
 
 func _process(_delta: float) -> void:
@@ -51,8 +50,8 @@ func remove_stun() -> void:
 	ailment_active = false
 	pass
 
-func _on_area_entered(area: trigger) -> void:
-	if area is trigger:
+func _on_area_entered(area: slow_zone) -> void:
+	if area is slow_zone:
 		if AilmentManager.ailment == 1:
 			apply_slow()
 		elif AilmentManager.ailment == 2:
@@ -60,6 +59,6 @@ func _on_area_entered(area: trigger) -> void:
 			apply_stun()
 
 
-func _on_area_exited(_area: trigger) -> void:
-	if _area is trigger:
+func _on_area_exited(_area: slow_zone) -> void:
+	if _area is slow_zone:
 		remove()

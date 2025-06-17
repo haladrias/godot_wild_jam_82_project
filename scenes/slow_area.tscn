@@ -4,3 +4,7 @@
 
 [node name="slow_area" type="Area2D"]
 script = ExtResource("1_fesha")
+status_ailment = 2
+
+[connection signal="body_entered" from="." to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_area_2d_area_exited"]

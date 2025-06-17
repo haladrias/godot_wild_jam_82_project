@@ -12,9 +12,10 @@ var interactable : Callable = func():
 
 
 func _on_area_entered(area: Area2D) -> void:
-	InteracatingComponent.register_arae(self)
+	
 	pass
 
 
 func _on_area_exited(area: Area2D) -> void:
-	InteracatingComponent.unregister_area(self)
+	
+	pass

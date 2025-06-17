@@ -13,7 +13,8 @@ position = Vector2(186, 363)
 
 [node name="slow_area" parent="." instance=ExtResource("2_iuir6")]
 position = Vector2(389, 26)
-status_ailment = 2
+status_ailment = 1
+target = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="slow_area"]
 position = Vector2(106, 214)
