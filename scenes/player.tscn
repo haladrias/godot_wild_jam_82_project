@@ -42,9 +42,6 @@ shape = SubResource("RectangleShape2D_j5nhj")
 
 [node name="MovementComponent" parent="." instance=ExtResource("5_ur7pv")]
 
-[node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.8, 0.8)
-
 [node name="DebugLabel" type="RichTextLabel" parent="."]
 offset_left = -104.0
 offset_top = -100.0
