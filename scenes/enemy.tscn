@@ -5,7 +5,7 @@
 [ext_resource type="PackedScene" uid="uid://e2ounky2keb5" path="res://scenes/input_component.tscn" id="3_j5nhj"]
 [ext_resource type="PackedScene" uid="uid://d0hnxsi4dimdg" path="res://scenes/movement_component.tscn" id="4_ujyba"]
 [ext_resource type="PackedScene" uid="uid://bwyv3npu3jfpg" path="res://scenes/detection_component.tscn" id="5_ujyba"]
-[ext_resource type="PackedScene" path="res://scenes/slow.tscn" id="6_xwavj"]
+[ext_resource type="PackedScene" uid="uid://doc5grjj7khox" path="res://scenes/slow.tscn" id="6_xwavj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0i82"]
 size = Vector2(64, 64)

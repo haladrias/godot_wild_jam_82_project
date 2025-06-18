@@ -50,7 +50,7 @@ func remove_status_effect() -> void:
 		for c in parent.get_children():
 			if c is CollisionShape2D:
 				c.disabled = false
-				print("enabled")
+				print("enabled ailment")
 
 func _slow() -> void:
 	speed -= amt_to_slow
