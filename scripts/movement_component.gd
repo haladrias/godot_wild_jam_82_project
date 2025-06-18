@@ -5,6 +5,7 @@ class_name MovementComponent
 @export var amt_to_slow : int = 200.0
 @export var parent : CharacterBody2D
 
+
 func _ready() -> void:
 	AilmentManager.entered.connect(apply_status_effect)
 	AilmentManager.exited.connect(remove_status_effect)
@@ -46,6 +47,10 @@ func remove_status_effect() -> void:
 	elif AilmentManager.ailment == 2:
 		await get_tree().create_timer(3).timeout
 		speed = 400
+		for c in parent.get_children():
+			if c is CollisionShape2D:
+				c.disabled = false
+				print("enabled")
 
 func _slow() -> void:
 	speed -= amt_to_slow
@@ -54,5 +59,10 @@ func _slow() -> void:
 func _stun() -> void:
 	await get_tree().create_timer(0.5).timeout
 	speed = 0
+	
+	for c in parent.get_children():
+		if c is CollisionShape2D:
+			c.disabled = true
+			print("disabled")
 	
 	pass

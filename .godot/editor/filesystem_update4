@@ -1,3 +1,5 @@
+res://scenes/interaction_testing.tscn
+res://scripts/movement_component.gd
 res://scenes/main.tscn
 res://scenes/game.tscn
 res://scenes/portal.tscn
@@ -6,10 +8,5 @@ res://scenes/input_component.tscn
 res://scenes/movement_component.tscn
 res://scenes/detection_component.tscn
 res://scenes/enemy.tscn
-res://scenes/interaction_testing.tscn
 res://scenes/slow.tscn
 res://scenes/slow_area.tscn
-res://scripts/slow.gd
-res://scripts/AilmentManager.gd
-res://scripts/slow_area.gd
-res://scripts/movement_component.gd
