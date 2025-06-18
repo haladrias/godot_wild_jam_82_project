@@ -1,0 +1,47 @@
+[gd_scene load_steps=7 format=3 uid="uid://cu2q0ljl5eb4i"]
+
+[ext_resource type="Script" uid="uid://d3b1mr0d6imc3" path="res://scripts/battery.gd" id="1_bavnn"]
+[ext_resource type="Texture2D" uid="uid://u5lgy7gvemfw" path="res://assets/icon.svg" id="2_ytmnr"]
+[ext_resource type="Script" uid="uid://d0sbgx6d0ds40" path="res://resources/power_source.gd" id="4_0fkoy"]
+[ext_resource type="PackedScene" uid="uid://dkkr6idllvs1p" path="res://scenes/power_source_component.tscn" id="4_op1cn"]
+
+[sub_resource type="Resource" id="Resource_op1cn"]
+script = ExtResource("4_0fkoy")
+current_power = 100.0
+max_power = 100.0
+randomize_power = false
+metadata/_custom_type_script = "uid://d0sbgx6d0ds40"
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ytmnr"]
+size = Vector2(48, 80)
+
+[node name="Battery" type="StaticBody2D" node_paths=PackedStringArray("power_source_component")]
+scale = Vector2(0.75, 0.75)
+script = ExtResource("1_bavnn")
+power_source = SubResource("Resource_op1cn")
+power_source_component = NodePath("PowerSourceComponent")
+randomize_power = null
+rand_min = null
+
+[node name="Icon" type="Sprite2D" parent="."]
+self_modulate = Color(0, 0, 0, 1)
+scale = Vector2(0.375, 0.625)
+texture = ExtResource("2_ytmnr")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+self_modulate = Color(0, 1, 0, 1)
+rotation = 0.00181524
+scale = Vector2(0.25, 0.5)
+texture = ExtResource("2_ytmnr")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ytmnr")
+
+[node name="PowerSourceComponent" parent="." instance=ExtResource("4_op1cn")]
+
+[node name="debug_label" type="RichTextLabel" parent="."]
+offset_left = -53.0
+offset_top = -85.0
+offset_right = 54.0
+offset_bottom = -45.0
+fit_content = true
