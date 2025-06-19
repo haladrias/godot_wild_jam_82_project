@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://doc5grjj7khox"]
+
+[ext_resource type="Script" uid="uid://bh2o721dpxo7d" path="res://scripts/slow.gd" id="1_4qhwf"]
+
+[node name="Node2D" type="Area2D"]
+script = ExtResource("1_4qhwf")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
