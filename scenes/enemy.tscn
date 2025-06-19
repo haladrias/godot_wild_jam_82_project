@@ -1,11 +1,11 @@
-[gd_scene load_steps=9 format=3 uid="uid://53qwx4khf5fi"]
+[gd_scene load_steps=10 format=3 uid="uid://53qwx4khf5fi"]
 
 [ext_resource type="Script" uid="uid://d278ked0oiuhy" path="res://scripts/enemy.gd" id="1_c4w8v"]
 [ext_resource type="Texture2D" uid="uid://u5lgy7gvemfw" path="res://assets/icon.svg" id="2_smlvt"]
 [ext_resource type="PackedScene" uid="uid://e2ounky2keb5" path="res://scenes/input_component.tscn" id="3_j5nhj"]
+[ext_resource type="PackedScene" uid="uid://cdyf7vl48rwk4" path="res://scenes/pathfinding.tscn" id="4_nenq2"]
 [ext_resource type="PackedScene" uid="uid://d0hnxsi4dimdg" path="res://scenes/movement_component.tscn" id="4_ujyba"]
 [ext_resource type="PackedScene" uid="uid://bwyv3npu3jfpg" path="res://scenes/detection_component.tscn" id="5_ujyba"]
-[ext_resource type="PackedScene" uid="uid://cdyf7vl48rwk4" path="res://scenes/pathfinding.tscn" id="6_xwavj"]
 [ext_resource type="PackedScene" uid="uid://doc5grjj7khox" path="res://scenes/slow.tscn" id="6_xwavj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0i82"]
@@ -32,6 +32,7 @@ scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_smlvt")
 
 [node name="DetectionComponent" parent="CollisionShape2D" instance=ExtResource("5_ujyba")]
+faction = 1
 cone_resolution = 20
 cone_radius = 300.0
 
@@ -43,14 +44,11 @@ collision_mask = 128
 shape = SubResource("RectangleShape2D_j5nhj")
 debug_color = Color(0, 0.6, 0.701961, 0.101961)
 
+[node name="pathfinding" parent="." instance=ExtResource("4_nenq2")]
+
 [node name="InputComponent" parent="." instance=ExtResource("3_j5nhj")]
 
 [node name="MovementComponent" parent="." instance=ExtResource("4_ujyba")]
-
-[node name="DetectionComponent" parent="." instance=ExtResource("5_ujyba")]
-faction = 1
-
-[node name="pathfinding" parent="." instance=ExtResource("6_xwavj")]
 
 [node name="DebugLabel" type="RichTextLabel" parent="."]
 offset_left = -104.0
@@ -63,5 +61,3 @@ horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Node2D" parent="." instance=ExtResource("6_xwavj")]
-
-[connection signal="area_entered" from="CollisionShape2D/Sprite2D/Area2D" to="." method="_on_area_2d_area_entered"]

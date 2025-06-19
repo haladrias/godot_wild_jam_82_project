@@ -12,7 +12,7 @@ var ailment_active : bool = false
 
 func _ready() -> void:
 	parent = get_parent()
-	
+
 	pass
 
 func _process(_delta: float) -> void:
@@ -22,7 +22,7 @@ func _process(_delta: float) -> void:
 		remove_stun()
 		return
 	_timer -= _delta
-	
+
 	print(_timer)
 
 func apply_slow() -> void:
@@ -39,7 +39,7 @@ func apply_stun()-> void:
 
 func remove() -> void:
 	movement.speed = normal_speed
-	
+
 	ailment_active = false
 	print("slow removed")
 	pass
