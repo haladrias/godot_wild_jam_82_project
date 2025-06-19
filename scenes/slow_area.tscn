@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://w2tfl263uj6t"]
+
+[ext_resource type="Script" uid="uid://be6livlb1ibv6" path="res://scripts/slow_area.gd" id="1_fesha"]
+
+[node name="slow_area" type="Area2D"]
+script = ExtResource("1_fesha")
+status_ailment = 2
+
+[connection signal="body_entered" from="." to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_area_2d_area_exited"]
