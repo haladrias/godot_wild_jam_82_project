@@ -22,14 +22,7 @@ detection_component = NodePath("CollisionShape2D/DetectionComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h0i82")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-self_modulate = Color(0, 1, 1, 1)
-rotation = -1.5708
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_tuyoq")
-
 [node name="DetectionComponent" parent="CollisionShape2D" instance=ExtResource("3_fjrip")]
-cone_resolution = 10
 
 [node name="Area2D" type="Area2D" parent="CollisionShape2D/DetectionComponent" groups=["Player"]]
 collision_layer = 131
@@ -37,6 +30,12 @@ collision_mask = 129
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/DetectionComponent/Area2D"]
 shape = SubResource("RectangleShape2D_j5nhj")
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
+self_modulate = Color(0, 1, 1, 1)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_tuyoq")
 
 [node name="InputComponent" parent="." instance=ExtResource("4_smehm")]
 

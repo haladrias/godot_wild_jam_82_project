@@ -25,16 +25,8 @@ detection_component = NodePath("CollisionShape2D/DetectionComponent")
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h0i82")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-self_modulate = Color(1, 0.278431, 0.207843, 1)
-rotation = -1.5708
-scale = Vector2(0.5, 0.5)
-texture = ExtResource("2_smlvt")
-
 [node name="DetectionComponent" parent="CollisionShape2D" instance=ExtResource("5_ujyba")]
 faction = 1
-cone_resolution = 20
-cone_radius = 300.0
 
 [node name="Area2D" type="Area2D" parent="CollisionShape2D/DetectionComponent" groups=["Detectable", "Enemy"]]
 collision_layer = 128
@@ -43,6 +35,12 @@ collision_mask = 128
 [node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/DetectionComponent/Area2D"]
 shape = SubResource("RectangleShape2D_j5nhj")
 debug_color = Color(0, 0.6, 0.701961, 0.101961)
+
+[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D/DetectionComponent"]
+self_modulate = Color(1, 0.278431, 0.207843, 1)
+rotation = -1.5708
+scale = Vector2(0.5, 0.5)
+texture = ExtResource("2_smlvt")
 
 [node name="pathfinding" parent="." instance=ExtResource("4_nenq2")]
 
