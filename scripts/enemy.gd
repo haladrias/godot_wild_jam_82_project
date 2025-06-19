@@ -1,23 +1,25 @@
-class_name Enemy extends Entity
-@export var pathfinder: Pathfinder
-
+extends CharacterBody2D
+@export var input_component: InputComponent
+@export var movement_component: MovementComponent
+@export var detection_component: DetectionComponent
+@onready var debug_label: RichTextLabel = $DebugLabel
+@onready var entity: CollisionShape2D = $CollisionShape2D
 
 func _ready() -> void:
 	#detection_component.proximity_detection_triggered.connect(panic)
-	detection_component.view_cone_detection_triggered.connect(detected)
-	detection_component.view_cone_detection_stopped.connect(not_detected)
-	DebugTools.update_debug_label(debug_label, "I don't see anything")
-	SignalBus.debug_spacebar_pressed.connect(debug_movement)
+	detection_component.view_cone_detection_triggered.connect(panic)
 	pass
 
 func _process(_delta):
-	# TODO: parameters to pass into handle_movement should be self, and some other direction as determined by pathfinding
-	#movement_component.handle_movement(self, input_component.get_input_direction())
-	# move_and_slide()
-	#pathfinder.update_path(vector2i_position())
-	pathfinder.update_entity_position(global_position)
-	pathfinder.update_path()
+	#detection_component.set_view_cone_rotation(input_component.get_mouse_location())
+	#entity.look_at(input_component.get_mouse_location())
+	#move_and_slide()
 	return
 
-func debug_movement():
-	self.position.x += 50
+func panic():
+	DebugTools.update_debug_label(debug_label, "I've been seen!")
+
+
+func _on_area_2d_area_entered(area: Area2D) -> void:
+	if area.is_in_group("PlayerDetector"):
+		panic()

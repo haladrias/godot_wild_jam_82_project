@@ -1,22 +1,17 @@
 [gd_scene load_steps=5 format=3 uid="uid://cmcew2vdcolxx"]
 
 [ext_resource type="Script" uid="uid://cegftdf7anhca" path="res://scripts/game.gd" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://cglaqk4lp80eb" path="res://scenes/player.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cglaqk4lp80eb" path="res://scenes/temp_player.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cso26riovh3dl" path="res://scenes/portal.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://53qwx4khf5fi" path="res://scenes/enemy.tscn" id="4_lbhrr"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_uwrxv")
 
-[node name="Panel" type="Panel" parent="."]
-offset_right = 5000.0
-offset_bottom = 5000.0
-
-[node name="Player" parent="." instance=ExtResource("2_lbhrr")]
-position = Vector2(210, 386)
-
-[node name="Enemy" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(684, 474)
-collision_layer = 1
+[node name="TempPlayer" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(372, 188)
 
 [node name="Portal" parent="." instance=ExtResource("3_lbhrr")]
+
+[node name="Enemy" parent="." instance=ExtResource("4_lbhrr")]
+position = Vector2(899, 199)
