@@ -4,9 +4,6 @@
 [ext_resource type="PackedScene" uid="uid://dsgrf3w1tbcdn" path="res://scenes/player.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cso26riovh3dl" path="res://scenes/portal.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://53qwx4khf5fi" path="res://scenes/enemy.tscn" id="4_lbhrr"]
-[ext_resource type="PackedScene" uid="uid://w2tfl263uj6t" path="res://scenes/slow_area.tscn" id="5_iywne"]
-
-[sub_resource type="CircleShape2D" id="CircleShape2D_p57ef"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_uwrxv")
@@ -16,16 +13,10 @@ offset_right = 5000.0
 offset_bottom = 5000.0
 
 [node name="Player" parent="." instance=ExtResource("2_lbhrr")]
-position = Vector2(206, 493)
+position = Vector2(210, 386)
 
 [node name="Enemy" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(684, 474)
 collision_layer = 1
 
 [node name="Portal" parent="." instance=ExtResource("3_lbhrr")]
-
-[node name="slow_area" parent="." instance=ExtResource("5_iywne")]
-position = Vector2(194, 279)
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="slow_area"]
-shape = SubResource("CircleShape2D_p57ef")
