@@ -41,7 +41,6 @@ shape = SubResource("RectangleShape2D_j5nhj")
 [node name="InputComponent" parent="." instance=ExtResource("4_smehm")]
 
 [node name="MovementComponent" parent="." instance=ExtResource("5_ur7pv")]
-speed = 400
 
 [node name="DebugLabel" type="RichTextLabel" parent="."]
 offset_left = -104.0
