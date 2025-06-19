@@ -6,7 +6,6 @@
 [ext_resource type="PackedScene" uid="uid://d0hnxsi4dimdg" path="res://scenes/movement_component.tscn" id="4_ujyba"]
 [ext_resource type="PackedScene" uid="uid://bwyv3npu3jfpg" path="res://scenes/detection_component.tscn" id="5_ujyba"]
 [ext_resource type="PackedScene" uid="uid://cdyf7vl48rwk4" path="res://scenes/pathfinding.tscn" id="6_xwavj"]
-[ext_resource type="PackedScene" uid="uid://cdyf7vl48rwk4" path="res://scenes/pathfinding.tscn" id="6_xwavj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0i82"]
 size = Vector2(64, 64)
@@ -46,12 +45,6 @@ debug_color = Color(0, 0.6, 0.701961, 0.101961)
 [node name="InputComponent" parent="." instance=ExtResource("3_j5nhj")]
 
 [node name="MovementComponent" parent="." instance=ExtResource("4_ujyba")]
-
-[node name="DetectionComponent" parent="." instance=ExtResource("5_ujyba")]
-faction = 1
-cone_resolution = 20
-cone_radius = 300.0
-cone_angle = 90.0
 
 [node name="DebugLabel" type="RichTextLabel" parent="."]
 offset_left = -104.0
