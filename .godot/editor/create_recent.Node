@@ -1,0 +1,9 @@
+CollisionShape2D
+Area2D
+Label
+RichTextLabel
+CollisionPolygon2D
+Camera2D
+Timer
+Sprite2D
+CharacterBody2D
