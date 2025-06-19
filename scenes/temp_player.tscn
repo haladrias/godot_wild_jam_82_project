@@ -1,12 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://53qwx4khf5fi"]
+[gd_scene load_steps=8 format=3 uid="uid://cglaqk4lp80eb"]
 
-[ext_resource type="Script" uid="uid://d278ked0oiuhy" path="res://scripts/enemy.gd" id="1_c4w8v"]
+[ext_resource type="Script" uid="uid://detbyyynrens2" path="res://scripts/temp_player.gd" id="1_qc3fp"]
 [ext_resource type="Texture2D" uid="uid://u5lgy7gvemfw" path="res://assets/icon.svg" id="2_smlvt"]
 [ext_resource type="PackedScene" uid="uid://e2ounky2keb5" path="res://scenes/input_component.tscn" id="3_j5nhj"]
 [ext_resource type="PackedScene" uid="uid://d0hnxsi4dimdg" path="res://scenes/movement_component.tscn" id="4_ujyba"]
 [ext_resource type="PackedScene" uid="uid://bwyv3npu3jfpg" path="res://scenes/detection_component.tscn" id="5_ujyba"]
-[ext_resource type="PackedScene" uid="uid://doc5grjj7khox" path="res://scenes/slow.tscn" id="6_xwavj"]
-[ext_resource type="PackedScene" uid="uid://cdyf7vl48rwk4" path="res://scenes/pathfinding.tscn" id="6_xwavj"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_h0i82"]
 size = Vector2(64, 64)
@@ -14,35 +12,35 @@ size = Vector2(64, 64)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_j5nhj"]
 size = Vector2(64, 64)
 
-[node name="Enemy" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "detection_component") groups=["Enemy"]]
-script = ExtResource("1_c4w8v")
+[node name="TempPlayer" type="CharacterBody2D" node_paths=PackedStringArray("input_component", "movement_component", "detection_component") groups=["Player"]]
+script = ExtResource("1_qc3fp")
 input_component = NodePath("InputComponent")
 movement_component = NodePath("MovementComponent")
-detection_component = NodePath("DetectionComponent")
+detection_component = NodePath("CollisionShape2D/DetectionComponent")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_h0i82")
 
 [node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-self_modulate = Color(1, 0.278431, 0.207843, 1)
+self_modulate = Color(0, 1, 1, 1)
 rotation = -1.5708
 scale = Vector2(0.5, 0.5)
 texture = ExtResource("2_smlvt")
 
-[node name="Area2D" type="Area2D" parent="CollisionShape2D/Sprite2D" groups=["Detectable", "Enemy"]]
-rotation = 1.5708
-scale = Vector2(2, 2)
+[node name="DetectionComponent" parent="CollisionShape2D" instance=ExtResource("5_ujyba")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/Sprite2D/Area2D"]
+[node name="Area2D" type="Area2D" parent="CollisionShape2D/DetectionComponent" groups=["Player"]]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CollisionShape2D/DetectionComponent/Area2D"]
 shape = SubResource("RectangleShape2D_j5nhj")
-debug_color = Color(0, 0.6, 0.701961, 0.101961)
 
 [node name="InputComponent" parent="." instance=ExtResource("3_j5nhj")]
 
-[node name="MovementComponent" parent="." instance=ExtResource("4_ujyba")]
+[node name="MovementComponent" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("4_ujyba")]
+parent = NodePath("..")
 
-[node name="DetectionComponent" parent="." instance=ExtResource("5_ujyba")]
-faction = 1
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(0.8, 0.8)
 
 [node name="DebugLabel" type="RichTextLabel" parent="."]
 offset_left = -104.0
@@ -53,7 +51,3 @@ text = "Default textqq"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
-
-[node name="Node2D" parent="." instance=ExtResource("6_xwavj")]
-
-[connection signal="area_entered" from="CollisionShape2D/Sprite2D/Area2D" to="." method="_on_area_2d_area_entered"]

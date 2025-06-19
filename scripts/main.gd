@@ -11,8 +11,6 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_tree().quit()
 	if event.is_action_pressed("restart_game"):
 		get_tree().reload_current_scene()
-	if event.is_action_pressed("space_bar"):
-		SignalBus.debug_spacebar_pressed.emit()
 
 func _ready() -> void:
 	SignalBus.portal_timer_completed.connect(on_portal_timer_completed)
