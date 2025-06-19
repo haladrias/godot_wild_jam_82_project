@@ -20,6 +20,3 @@ position = Vector2(684, 474)
 collision_layer = 1
 
 [node name="Portal" parent="." instance=ExtResource("3_lbhrr")]
-
-[node name="Enemy" parent="." instance=ExtResource("4_lbhrr")]
-position = Vector2(899, 199)
