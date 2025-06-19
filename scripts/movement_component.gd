@@ -21,7 +21,7 @@ func apply_status_effect()-> void:
 	#elif AilmentManager.ailment == 2:
 		#_stun()
 		#remove_status_effect()
-	
+
 	match AilmentManager.target:
 		1:#PLAYER
 			if parent.is_in_group("Player"):
@@ -59,10 +59,10 @@ func _slow() -> void:
 func _stun() -> void:
 	await get_tree().create_timer(0.5).timeout
 	speed = 0
-	
+
 	for c in parent.get_children():
 		if c is CollisionShape2D:
 			c.disabled = true
 			print("disabled")
-	
+
 	pass
