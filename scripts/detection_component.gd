@@ -105,10 +105,10 @@ func set_view_cone_polygon():
 
 func set_faction_groups():
 	# Can use this to filter out bodies based on factions defined in GlobalConstants.gd (based on group membership)
-		match faction:
-			GlobalConstants.FactionType.Player:
+	match faction:
+		GlobalConstants.FactionType.Player:
 			view_cone.add_to_group("PlayerDetector")
 			proximity_area.add_to_group("PlayerDetector")
-			GlobalConstants.FactionType.Enemy:
+		GlobalConstants.FactionType.Enemy:
 			view_cone.add_to_group("EnemyDetector")
 			proximity_area.add_to_group("EnemyDetector")
