@@ -1,9 +1,10 @@
-[gd_scene load_steps=5 format=3 uid="uid://cmcew2vdcolxx"]
+[gd_scene load_steps=6 format=3 uid="uid://cmcew2vdcolxx"]
 
 [ext_resource type="Script" uid="uid://cegftdf7anhca" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cglaqk4lp80eb" path="res://scenes/player.tscn" id="2_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cso26riovh3dl" path="res://scenes/portal.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://53qwx4khf5fi" path="res://scenes/enemy.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cf2iueuvjdaio" path="res://scenes/map_layout.tscn" id="5_iywne"]
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_uwrxv")
@@ -19,3 +20,5 @@ position = Vector2(210, 386)
 position = Vector2(684, 474)
 
 [node name="Portal" parent="." instance=ExtResource("3_lbhrr")]
+
+[node name="map_layout" parent="." instance=ExtResource("5_iywne")]
