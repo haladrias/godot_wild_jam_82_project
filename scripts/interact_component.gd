@@ -3,19 +3,29 @@ class_name InteractComponent extends Area2D
 @onready var interact_area: CollisionShape2D = $CollisionShape2D
 @onready var interact_dialogue: RichTextLabel = $InteractDialogue
 @export var interact_type: GlobalConstants.PowerType
-@onready var old_parent: = get_parent().get_parent()
+@onready var game_node: = get_parent().get_parent()
 @onready var parent:= get_parent()
 ## How far the item is place when unheld
 @export var item_throw_distance: int = 100
+@export var power_type: GlobalConstants.PowerType
 
-var get_interact_input = Input.is_action_just_pressed("ui_interact")
+var get_interact_input = InputMap.action_get_events("ui_interact")[0].as_text()
 var can_pickup: bool = false
 
 func _ready() -> void:
 	SignalBus.pressed_interact.connect(_on_pressed_interact)
 	await DebugTools.set_timer(.5)
-	print(old_parent)
-	print(get_parent())
+	interact_dialogue.text = "Press " + str(get_interact_input) + " to pick up"
+	match power_type:
+		GlobalConstants.PowerType.SOURCE:
+			print("Power Source")
+			add_to_group("PowerSource")
+		_:
+			printerr("Invalid power type")
+	# print(InputMap.action_get_events("ui_interact"))
+	# var key_event = InputMap.action_get_events("ui_interact")[0].as_text()
+	# print(key_event)
+	# get_action_list("ui_interact"))
 
 # TODO: Add a check using get_overlapping_bodies() to pick closest interactable item. Currently will grab everything in range
 func _on_body_entered(body: Node2D) -> void:
@@ -45,10 +55,11 @@ func unparent_from_player() -> void:
 	parent.collision_layer = 1
 	interact_area.disabled = false
 	parent.position = parent.position + Vector2(item_throw_distance, 0)
-	parent.reparent(old_parent)
+	parent.reparent(game_node) #! Needs to deal with having parents that aren't the game
+	parent.rotation = 0
 
 
-	print("Attempted to reparent to " + str(old_parent))
+	print("Attempted to reparent to " + str(game_node))
 
 
 func _on_pressed_interact(player) -> void:
@@ -58,4 +69,4 @@ func _on_pressed_interact(player) -> void:
 		if get_parent().get_parent() == player:
 			call_deferred("unparent_from_player")
 			printerr("Drop it")
-			print(old_parent)
+			print(game_node)

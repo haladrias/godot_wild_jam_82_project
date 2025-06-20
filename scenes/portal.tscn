@@ -12,11 +12,9 @@ rescue_timer_duration = 5.0
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 1, 0.309804)
-position = Vector2(542, 300)
 texture = ExtResource("2_jr6l0")
 
 [node name="Area2D" type="Area2D" parent="." groups=["Portal"]]
-position = Vector2(542, 300)
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
@@ -29,19 +27,19 @@ one_shot = true
 
 [node name="RescueLabel" type="RichTextLabel" parent="."]
 visible = false
-offset_left = 456.0
-offset_top = 200.0
-offset_right = 640.0
-offset_bottom = 229.0
+offset_left = -88.0
+offset_top = -128.0
+offset_right = 96.0
+offset_bottom = -99.0
 text = "Time remaining: "
 fit_content = true
 vertical_alignment = 1
 
 [node name="DebugLabel" type="RichTextLabel" parent="."]
-offset_left = 456.0
-offset_top = 368.0
-offset_right = 624.0
-offset_bottom = 448.0
+offset_left = -82.0
+offset_top = 70.0
+offset_right = 86.0
+offset_bottom = 150.0
 fit_content = true
 vertical_alignment = 1
 

@@ -7,7 +7,7 @@ enum FactionType {
 }
 
 enum PowerType {
-	Source = 0,
-	Charger = 1,
-	Consumer = 2
+	SOURCE = 0,
+	CHARGER = 1,
+	CONSUMER = 2
 }
