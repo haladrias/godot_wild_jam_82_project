@@ -6,4 +6,8 @@ enum FactionType {
 	Neutral = 2,
 }
 
-enum Detectors {}
+enum PowerType {
+	Source = 0,
+	Charger = 1,
+	Consumer = 2
+}

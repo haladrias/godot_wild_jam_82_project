@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://beqmah0h4km7x" path="res://scripts/pathfinding.gd" id="1_xug3m"]
 
-
 [node name="pathfinding" type="Node2D"]
 script = ExtResource("1_xug3m")
 
