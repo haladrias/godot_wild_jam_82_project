@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Godot Wild Jam 82"
-run/main_scene="uid://3ua4wtv1wj24"
+run/main_scene="uid://dr0mh468atksu"
 config/features=PackedStringArray("4.4", "GL Compatibility")
 config/icon="res://icon.svg"
 
