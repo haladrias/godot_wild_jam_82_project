@@ -1,6 +1,7 @@
 class_name PowerConsumerComponment extends Node2D
 ## Component for objects that need to draw power from a PowerSource
-
+signal power_activated
+signal power_deactivated
 @export_group("Power Consumer Stats")
 ## The amount of power drained per tick
 @export_range(1.0, 100.0, 0.1) var drain_per_tick: float = 0.5
@@ -20,12 +21,14 @@ func start_drain(power_source: PowerSourceComponent) -> void:
 func drain_power_source(power_source: PowerSourceComponent) -> void:
 	print("Attempt to drain power source")
 	# TODO: Rework this logic to drain to a device
+	power_activated.emit(power_source)
 	while power_source.current_power > power_source.min_power and can_drain:
 		print("Draining power source")
 		power_source.current_power -= drain_per_tick
 		if power_source.current_power <= power_source.min_power:
 			power_source.current_power = power_source.min_power
 			power_source.depleted.emit() # TODO: what to connect this to?
+			power_deactivated.emit(power_source)
 		await get_tree().create_timer(tick_interval).timeout
 		continue
 
