@@ -1,6 +1,6 @@
-class_name PowerConsumer extends Node2D
+class_name PowerConsumer extends PowerConsumerComponment
 @onready var debug_label: RichTextLabel = $DebugLabel
-@export var power_consumer_component: PowerConsumerComponment
+# @export var power_consumer_component: PowerConsumerComponment # TODO: This needs a rework - it's redundant to have as a component if I can extend the class instead?
 @onready var consume_area: Area2D = $ConsumeArea
 
 var battery_connected: bool = false
@@ -16,7 +16,7 @@ func _on_consume_area_area_entered(area: Area2D) -> void:
 		DebugTools.update_debug_label(debug_label, str(battery.name) + " connected")
 
 		## Tell power_consumer_component to charge battery
-		power_consumer_component.start_drain(battery)
+		start_drain(battery)
 		SignalBus.battery_connected_to_consumer()
 
 func reparent_to_consumer(b) -> void:
@@ -28,7 +28,7 @@ func _on_consume_area_area_exited(area: Area2D) -> void:
 		if area.is_in_group("PowerSource") and battery_connected == true:
 			battery_connected = false
 			DebugTools.update_debug_label(debug_label, "Battery disconnected")
-			power_consumer_component.stop_drain()
+			stop_drain()
 		else:
 			pass
 

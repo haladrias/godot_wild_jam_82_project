@@ -8,6 +8,7 @@ signal pressed_interact
 
 ## Debugging signals
 signal debug_spacebar_pressed
+signal debug_shift_spacebar_pressed
 signal debug_set_grid_size # Signals game.gd to update the panel size to indicate grid size
 
 ## Power management signals
