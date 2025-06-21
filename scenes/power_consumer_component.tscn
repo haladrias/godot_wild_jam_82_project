@@ -1,6 +1,0 @@
-[gd_scene load_steps=2 format=3 uid="uid://dlgr4gx1fp05v"]
-
-[ext_resource type="Script" uid="uid://rsa3g3avwwly" path="res://scripts/power_consumer_component.gd" id="1_qr57t"]
-
-[node name="PowerConsumerComponent" type="Node2D"]
-script = ExtResource("1_qr57t")

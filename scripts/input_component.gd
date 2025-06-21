@@ -14,7 +14,7 @@ func _physics_process(_delta):
 
 func get_interact_input():
 	if Input.is_action_just_pressed("ui_interact"):
-		SignalBus.pressed_interact.emit(get_parent())
+		SignalBus.pressed_interact.emit()
 
 
 func get_input_direction() -> Vector2:

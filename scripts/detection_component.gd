@@ -74,7 +74,6 @@ func view_cone_detection():
 			print("NEW DETECTION: ", body.name)
 			view_cone_detection_triggered.emit(body)
 
-
 	# Check for lost bodies
 	for body in _bodies_in_fov:
 		if not current_bodies_in_fov.has(body):
