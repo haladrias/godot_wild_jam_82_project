@@ -19,7 +19,7 @@ func _ready():
 	initialize_grid()
 	update_path()
 	## Timer is used to ensure that the signal is connected and the Panel is ready before the signal is emitted
-	await get_tree().create_timer(0.2).timeout
+	await DebugTools.set_timer(.1)
 	SignalBus.debug_set_grid_size.emit(Vector2(grid_size * cell_size))
 
 func update_entity_position(pos):

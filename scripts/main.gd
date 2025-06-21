@@ -11,6 +11,8 @@ func _unhandled_input(event: InputEvent) -> void:
 		get_tree().quit()
 	if event.is_action_pressed("restart_game"):
 		get_tree().reload_current_scene()
+	if event.is_action_pressed("shift_space_bar"):
+		SignalBus.debug_shift_spacebar_pressed.emit()
 	if event.is_action_pressed("space_bar"):
 		SignalBus.debug_spacebar_pressed.emit()
 

@@ -1,0 +1,18 @@
+[gd_scene load_steps=2 format=3 uid="uid://cceigyv6a4qgp"]
+
+[ext_resource type="Script" uid="uid://dja8eu0ldam3v" path="res://scripts/interact_component.gd" id="1_ijoei"]
+
+[node name="InteractComponent" type="Area2D"]
+script = ExtResource("1_ijoei")
+
+[node name="InteractDialogue" type="RichTextLabel" parent="."]
+offset_left = -74.6667
+offset_top = -24.0
+offset_right = 77.3333
+offset_bottom = 16.0
+text = "Press E to pickup"
+scroll_active = false
+horizontal_alignment = 1
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]

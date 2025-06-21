@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://drwk80ccs6fej"]
+
+[ext_resource type="Script" uid="uid://bpknsglclgm8r" path="res://scripts/power_source_component.gd" id="1_c18e0"]
+
+[node name="PowerChargerComponent" type="Node2D"]
+script = ExtResource("1_c18e0")

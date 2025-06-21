@@ -46,10 +46,12 @@ offset_left = -104.0
 offset_top = -100.0
 offset_right = 120.0
 offset_bottom = -68.0
+pivot_offset = Vector2(104, 17)
+size_flags_horizontal = 4
 text = "Default text"
 fit_content = true
 horizontal_alignment = 1
 vertical_alignment = 1
 
 [node name="Camera2D" type="Camera2D" parent="."]
-zoom = Vector2(0.8, 0.8)
+zoom = Vector2(0.7, 0.7)
