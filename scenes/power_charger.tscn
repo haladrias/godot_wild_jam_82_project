@@ -1,14 +1,14 @@
 [gd_scene load_steps=5 format=3 uid="uid://k0kdve66bkil"]
 
-[ext_resource type="Script" uid="uid://dda3fkgebte6h" path="res://scripts/charger.gd" id="1_pxnrp"]
-[ext_resource type="Texture2D" uid="uid://u5lgy7gvemfw" path="res://assets/icon.svg" id="2_xjf26"]
-[ext_resource type="Script" uid="uid://b6oo25exabth1" path="res://scripts/power_charger_component.gd" id="3_xjf26"]
+[ext_resource type="Script" uid="uid://dda3fkgebte6h" path="res://scripts/charger.gd" id="1_ct5km"]
+[ext_resource type="Texture2D" uid="uid://u5lgy7gvemfw" path="res://assets/icon.svg" id="2_qj8vf"]
+[ext_resource type="Script" uid="uid://b6oo25exabth1" path="res://scripts/power_charger_component.gd" id="3_7433n"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_d4jfq"]
 size = Vector2(132, 136)
 
 [node name="Charger" type="Node2D" node_paths=PackedStringArray("power_charger_component")]
-script = ExtResource("1_pxnrp")
+script = ExtResource("1_ct5km")
 power_charger_component = NodePath("PowerChargerComponent")
 
 [node name="ChargeArea" type="Area2D" parent="."]
@@ -20,7 +20,7 @@ debug_color = Color(2.83971e-06, 0.644661, 0.282626, 0.0784314)
 [node name="Sprite2D" type="Sprite2D" parent="."]
 self_modulate = Color(1, 1, 0, 0.309804)
 position = Vector2(-1, 0)
-texture = ExtResource("2_xjf26")
+texture = ExtResource("2_qj8vf")
 
 [node name="DebugLabel" type="RichTextLabel" parent="."]
 offset_left = -80.0
@@ -31,7 +31,7 @@ fit_content = true
 vertical_alignment = 1
 
 [node name="PowerChargerComponent" type="Node2D" parent="."]
-script = ExtResource("3_xjf26")
+script = ExtResource("3_7433n")
 metadata/_custom_type_script = "uid://b6oo25exabth1"
 
 [connection signal="area_entered" from="ChargeArea" to="." method="_on_charge_area_area_entered"]

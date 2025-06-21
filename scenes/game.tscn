@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://cmcew2vdcolxx"]
+[gd_scene load_steps=10 format=3 uid="uid://cmcew2vdcolxx"]
 
 [ext_resource type="Script" uid="uid://cegftdf7anhca" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cglaqk4lp80eb" path="res://scenes/player.tscn" id="2_lnu2h"]
@@ -6,7 +6,8 @@
 [ext_resource type="PackedScene" uid="uid://53qwx4khf5fi" path="res://scenes/enemy.tscn" id="4_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://cu2q0ljl5eb4i" path="res://scenes/battery.tscn" id="5_iywne"]
 [ext_resource type="Script" uid="uid://d0sbgx6d0ds40" path="res://resources/power_source.gd" id="6_p57ef"]
-[ext_resource type="PackedScene" uid="uid://k0kdve66bkil" path="res://scenes/charger.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://k0kdve66bkil" path="res://scenes/power_charger.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://d2pvwyvuthxbj" path="res://scenes/power_consumer.tscn" id="8_gee14"]
 
 [sub_resource type="Resource" id="Resource_u5sy4"]
 script = ExtResource("6_p57ef")
@@ -44,3 +45,6 @@ position = Vector2(512, 184)
 
 [node name="Charger" parent="." instance=ExtResource("7_u5sy4")]
 position = Vector2(931, 262)
+
+[node name="Consumer" parent="." instance=ExtResource("8_gee14")]
+position = Vector2(930, 473)

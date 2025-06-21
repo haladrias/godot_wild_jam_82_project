@@ -1,18 +1,34 @@
 class_name PowerConsumerComponment extends Node2D
 ## Component for objects that need to draw power from a PowerSource
 
-## The amount of power this device consumes per second.
-@export var consumption_rate: float = 10.0
+@export_group("Power Consumer Stats")
+## The amount of power drained per tick
+@export_range(1.0, 100.0, 0.1) var drain_per_tick: float = 0.5
+## The amount of time in seconds between each drain tick
+@export_range(0.01, 2.0, 0.01) var tick_interval: float = 0.25
+var can_drain: bool = false
+## The power source to drain
+func start_drain(power_source: PowerSourceComponent) -> void:
+	power_source.powersource_is_connected = true
+	can_drain = true
+	# TODO: sound/animations
+	drain_power_source(power_source)
+	print("Starting drain")
 
-## A reference to the PowerSourceComponent to draw power from.
-@export var power_source_component: PowerSourceComponent
 
-func _process(delta):
-	if power_source_component:
-		var power_needed = consumption_rate * delta
-		var power_received = power_source_component.provide_power(power_needed)
+## Drains the power source by a given amount per tick until fully drained
+func drain_power_source(power_source: PowerSourceComponent) -> void:
+	print("Attempt to drain power source")
+	# TODO: Rework this logic to drain to a device
+	while power_source.current_power > power_source.min_power and can_drain:
+		print("Draining power source")
+		power_source.current_power -= drain_per_tick
+		if power_source.current_power <= power_source.min_power:
+			power_source.current_power = power_source.min_power
+			power_source.depleted.emit() # TODO: what to connect this to?
+		await get_tree().create_timer(tick_interval).timeout
+		continue
 
-		if power_received < power_needed:
-			# The device is not receiving enough power.
-			# You could add logic here to make the device turn off or work at a reduced capacity.
-			print("Not enough power!")
+
+func stop_drain() -> void:
+	can_drain = false
