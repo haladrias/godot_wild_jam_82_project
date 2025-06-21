@@ -1,9 +1,21 @@
+[gd_scene load_steps=11 format=3 uid="uid://cmcew2vdcolxx"]
 
 [ext_resource type="Script" uid="uid://cegftdf7anhca" path="res://scripts/game.gd" id="1_uwrxv"]
-[ext_resource type="PackedScene" uid="uid://cglaqk4lp80eb" path="res://scenes/player.tscn" id="2_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cglaqk4lp80eb" path="res://scenes/player.tscn" id="2_lnu2h"]
 [ext_resource type="PackedScene" uid="uid://cso26riovh3dl" path="res://scenes/portal.tscn" id="3_lbhrr"]
 [ext_resource type="PackedScene" uid="uid://53qwx4khf5fi" path="res://scenes/enemy.tscn" id="4_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://cu2q0ljl5eb4i" path="res://scenes/battery.tscn" id="5_iywne"]
+[ext_resource type="Script" uid="uid://d0sbgx6d0ds40" path="res://resources/power_source.gd" id="6_p57ef"]
+[ext_resource type="PackedScene" uid="uid://k0kdve66bkil" path="res://scenes/power_charger.tscn" id="7_u5sy4"]
+[ext_resource type="PackedScene" uid="uid://d2pvwyvuthxbj" path="res://scenes/power_consumer.tscn" id="8_gee14"]
+[ext_resource type="PackedScene" uid="uid://buwb11fl3qpyr" path="res://scenes/flood_light.tscn" id="9_0tnpc"]
 
+[sub_resource type="Resource" id="Resource_u5sy4"]
+script = ExtResource("6_p57ef")
+current_power = 100.0
+max_power = 100.0
+rand_min = 0.0
+metadata/_custom_type_script = "uid://d0sbgx6d0ds40"
 
 [node name="Game" type="Node2D"]
 script = ExtResource("1_uwrxv")
@@ -12,10 +24,32 @@ script = ExtResource("1_uwrxv")
 offset_right = 3200.0
 offset_bottom = 3200.0
 
-
+[node name="Player" parent="." instance=ExtResource("2_lnu2h")]
+position = Vector2(690, 384)
 
 [node name="Enemy" parent="." instance=ExtResource("4_lbhrr")]
 position = Vector2(256, 520)
 
 [node name="Portal" parent="." instance=ExtResource("3_lbhrr")]
+position = Vector2(223, 162)
 
+[node name="Battery" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(768, 184)
+power_source = SubResource("Resource_u5sy4")
+current_power = 0.0
+
+[node name="Battery2" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(640, 184)
+
+[node name="Battery3" parent="." instance=ExtResource("5_iywne")]
+position = Vector2(512, 184)
+
+[node name="Charger" parent="." instance=ExtResource("7_u5sy4")]
+position = Vector2(931, 262)
+
+[node name="Consumer" parent="." instance=ExtResource("8_gee14")]
+position = Vector2(930, 473)
+
+[node name="FloodLight" parent="." instance=ExtResource("9_0tnpc")]
+position = Vector2(480, 851)
+rotation = -1.57079
