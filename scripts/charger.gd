@@ -31,6 +31,7 @@ func _on_charge_area_area_exited(area: Area2D) -> void:
 		if area.is_in_group("PowerSource") and battery_connected == true:
 			battery_connected = false
 			DebugTools.update_debug_label(debug_label, "Battery disconnected")
+			power_charger_component.stop_charge()
 		else:
 			pass
 
