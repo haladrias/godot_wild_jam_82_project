@@ -17,7 +17,7 @@ metadata/_custom_type_script = "uid://d0sbgx6d0ds40"
 size = Vector2(48, 80)
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fkoy"]
-radius = 96.0
+radius = 64.0
 
 [node name="Battery" type="StaticBody2D" node_paths=PackedStringArray("power_source_component", "interact_component")]
 scale = Vector2(0.75, 0.75)
@@ -42,6 +42,12 @@ shape = SubResource("RectangleShape2D_ytmnr")
 
 [node name="PowerSourceComponent" parent="." instance=ExtResource("4_op1cn")]
 
+[node name="InteractComponent" parent="." instance=ExtResource("5_0fkoy")]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractComponent"]
+shape = SubResource("CircleShape2D_0fkoy")
+debug_color = Color(0, 0.6, 0.701961, 0.141176)
+
 [node name="debug_label" type="RichTextLabel" parent="."]
 offset_left = -53.0
 offset_top = -96.0
@@ -49,8 +55,3 @@ offset_right = 54.0
 offset_bottom = -45.0
 fit_content = true
 horizontal_alignment = 1
-
-[node name="InteractComponent" parent="." instance=ExtResource("5_0fkoy")]
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="InteractComponent"]
-shape = SubResource("CircleShape2D_0fkoy")

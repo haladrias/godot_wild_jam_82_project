@@ -6,7 +6,7 @@ class_name InteractComponent extends Area2D
 @onready var game_node: = get_parent().get_parent()
 @onready var parent:= get_parent()
 ## How far the item is place when unheld
-@export var item_throw_distance: int = 100
+@export var item_throw_distance: int = 75
 @export var power_type: GlobalConstants.PowerType
 
 var get_interact_input = InputMap.action_get_events("ui_interact")[0].as_text()
@@ -41,25 +41,30 @@ func _on_body_exited(body: Node2D) -> void:
 		can_pickup = false
 		interact_dialogue.hide()
 
+
+## Reparents the item to the player
 func reparent_to_player(p) -> void:
-	if can_pickup:
-		can_pickup = false
-		get_parent().collision_layer = 0
-		interact_area.disabled = true
-		parent.reparent(p)
-		parent.global_position = p.global_position
+	var overlap = self.get_overlapping_bodies()
+	for body in overlap:
+		if body is Player:
+			if can_pickup:
+				can_pickup = false
+				get_parent().collision_layer = 0
+				interact_area.disabled = true
+				# monitoring = false
+				parent.reparent(p)
+				parent.global_position = p.global_position
 
 
+## Reparents the item to the game scene
 func unparent_from_player() -> void:
 	can_pickup = true
 	parent.collision_layer = 1
 	interact_area.disabled = false
+	# monitoring = true
 	parent.position = parent.position + Vector2(item_throw_distance, 0)
-	parent.reparent(game_node) #! Needs to deal with having parents that aren't the game
+	parent.reparent(game_node) # Puts the item on the ground
 	parent.rotation = 0
-
-
-	print("Attempted to reparent to " + str(game_node))
 
 
 func _on_pressed_interact(player) -> void:
@@ -68,5 +73,3 @@ func _on_pressed_interact(player) -> void:
 	elif can_pickup == false:
 		if get_parent().get_parent() == player:
 			call_deferred("unparent_from_player")
-			printerr("Drop it")
-			print(game_node)

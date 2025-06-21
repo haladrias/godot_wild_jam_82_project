@@ -6,6 +6,7 @@
 script = ExtResource("1_ijoei")
 
 [node name="InteractDialogue" type="RichTextLabel" parent="."]
+visible = false
 offset_left = -74.6667
 offset_top = -24.0
 offset_right = 77.3333

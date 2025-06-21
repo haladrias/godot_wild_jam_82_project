@@ -27,7 +27,6 @@ offset_left = -80.0
 offset_top = 68.0
 offset_right = 88.0
 offset_bottom = 148.0
-text = "Test"
 fit_content = true
 vertical_alignment = 1
 
