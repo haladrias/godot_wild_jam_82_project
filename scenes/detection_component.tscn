@@ -14,7 +14,7 @@ collision_mask = 128
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewCone"]
-
+polygon = PackedVector2Array(0, 0, 212.132, -212.132, 267.302, -136.197, 296.307, -46.9303, 296.307, 46.9303, 267.302, 136.197, 212.132, 212.132)
 
 [node name="ProximityArea" type="Area2D" parent="."]
 visible = false
