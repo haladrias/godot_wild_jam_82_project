@@ -10,8 +10,6 @@ func _ready() -> void:
 
 func detected(body):
 	DebugTools.update_debug_label(debug_label, "I detected a " + body.name)
-	if body.is_in_group("Enemy"):
-		body.run_away_from_light()
 
 
 func not_detected(body):
