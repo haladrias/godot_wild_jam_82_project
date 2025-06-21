@@ -4,28 +4,24 @@ class_name Charger extends Node2D
 @onready var charge_area: Area2D = $ChargeArea
 
 
-signal battery_connected_to_charger
+# signal battery_connected_to_charger
 var battery_connected: bool = false
 
 
 func _on_charge_area_area_entered(area: Area2D) -> void:
 	if area.is_in_group("PowerSource") and battery_connected == false:
 		var battery = area.get_parent()
-		call_deferred("connect_to_charger", battery)
+		call_deferred("reparent_to_charge", battery)
 		battery_connected = true
 		battery.global_position = global_position
 		DebugTools.update_debug_label(debug_label, str(battery.name) + " connected")
 
 		## Tell power_charger_component to charge battery
-		power_charger_component.connect_to_power_source(battery)
-		battery_connected_to_charger.emit()
-
-	# elif check_battery_connected():
-	# 	if battery_connected:
-	# 		DebugTools.update_debug_label(debug_label, "Battery already connected")
+		power_charger_component.start_charge(battery)
+		SignalBus.battery_connected_to_charger()
 
 
-func connect_to_charger(b) -> void:
+func reparent_to_charge(b) -> void:
 	b.reparent(self)
 
 

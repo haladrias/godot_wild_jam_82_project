@@ -10,6 +10,12 @@ signal pressed_interact
 signal debug_spacebar_pressed
 signal debug_set_grid_size # Signals game.gd to update the panel size to indicate grid size
 
+## Charger signals
+signal battery_in_charger
+func battery_connected_to_charger() -> void:
+	battery_in_charger.emit()
+
+
 #? Consider refactoring to remove those annoying warnings that the signals were declared but not used
 #? This has an additional benefit of being able to enforce variable type
 

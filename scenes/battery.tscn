@@ -1,17 +1,9 @@
-[gd_scene load_steps=9 format=3 uid="uid://cu2q0ljl5eb4i"]
+[gd_scene load_steps=7 format=3 uid="uid://cu2q0ljl5eb4i"]
 
 [ext_resource type="Script" uid="uid://d3b1mr0d6imc3" path="res://scripts/battery.gd" id="1_bavnn"]
 [ext_resource type="Texture2D" uid="uid://u5lgy7gvemfw" path="res://assets/icon.svg" id="2_ytmnr"]
-[ext_resource type="Script" uid="uid://d0sbgx6d0ds40" path="res://resources/power_source.gd" id="4_0fkoy"]
 [ext_resource type="PackedScene" uid="uid://dkkr6idllvs1p" path="res://scenes/power_source_component.tscn" id="4_op1cn"]
 [ext_resource type="PackedScene" uid="uid://cceigyv6a4qgp" path="res://scenes/interact_component.tscn" id="5_0fkoy"]
-
-[sub_resource type="Resource" id="Resource_op1cn"]
-script = ExtResource("4_0fkoy")
-current_power = 100.0
-max_power = 100.0
-randomize_power = false
-metadata/_custom_type_script = "uid://d0sbgx6d0ds40"
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ytmnr"]
 size = Vector2(48, 80)
@@ -19,11 +11,9 @@ size = Vector2(48, 80)
 [sub_resource type="CircleShape2D" id="CircleShape2D_0fkoy"]
 radius = 64.0
 
-[node name="Battery" type="StaticBody2D" node_paths=PackedStringArray("power_source_component", "interact_component")]
+[node name="Battery" type="StaticBody2D" node_paths=PackedStringArray("interact_component")]
 scale = Vector2(0.75, 0.75)
 script = ExtResource("1_bavnn")
-power_source = SubResource("Resource_op1cn")
-power_source_component = NodePath("PowerSourceComponent")
 interact_component = NodePath("InteractComponent")
 
 [node name="Icon" type="Sprite2D" parent="."]

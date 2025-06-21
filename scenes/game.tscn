@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cmcew2vdcolxx"]
+[gd_scene load_steps=9 format=3 uid="uid://cmcew2vdcolxx"]
 
 [ext_resource type="Script" uid="uid://cegftdf7anhca" path="res://scripts/game.gd" id="1_uwrxv"]
 [ext_resource type="PackedScene" uid="uid://cglaqk4lp80eb" path="res://scenes/player.tscn" id="2_lnu2h"]
@@ -12,21 +12,7 @@
 script = ExtResource("6_p57ef")
 current_power = 100.0
 max_power = 100.0
-randomize_power = false
-metadata/_custom_type_script = "uid://d0sbgx6d0ds40"
-
-[sub_resource type="Resource" id="Resource_gee14"]
-script = ExtResource("6_p57ef")
-current_power = 81.0
-max_power = 46.0
-randomize_power = false
-metadata/_custom_type_script = "uid://d0sbgx6d0ds40"
-
-[sub_resource type="Resource" id="Resource_0tnpc"]
-script = ExtResource("6_p57ef")
-current_power = 100.0
-max_power = 100.0
-randomize_power = false
+rand_min = 0.0
 metadata/_custom_type_script = "uid://d0sbgx6d0ds40"
 
 [node name="Game" type="Node2D"]
@@ -48,16 +34,13 @@ position = Vector2(223, 162)
 [node name="Battery" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(768, 184)
 power_source = SubResource("Resource_u5sy4")
-randomize_power = true
-rand_min = 30.0
+current_power = 0.0
 
 [node name="Battery2" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(640, 184)
-power_source = SubResource("Resource_gee14")
 
 [node name="Battery3" parent="." instance=ExtResource("5_iywne")]
 position = Vector2(512, 184)
-power_source = SubResource("Resource_0tnpc")
 
 [node name="Charger" parent="." instance=ExtResource("7_u5sy4")]
 position = Vector2(931, 262)
