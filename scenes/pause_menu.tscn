@@ -1,0 +1,97 @@
+[gd_scene load_steps=3 format=3 uid="uid://djs3esa737ulu"]
+
+[ext_resource type="Script" uid="uid://bt3iolhgk32k7" path="res://scripts/pause_menu.gd" id="1_n87rw"]
+[ext_resource type="AudioStream" uid="uid://b572d5xk2f6p0" path="res://music/MenuNoise1.mp3" id="3_5d2l8"]
+
+[node name="CanvasLayer" type="CanvasLayer"]
+process_mode = 3
+script = ExtResource("1_n87rw")
+
+[node name="Control" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="Control"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.0392157, 0.0392157, 0.0392157, 0.835294)
+
+[node name="CenterContainer" type="CenterContainer" parent="Control"]
+layout_mode = 0
+offset_left = 358.0
+offset_top = 97.0
+offset_right = 707.0
+offset_bottom = 528.0
+mouse_filter = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="Control/CenterContainer"]
+layout_mode = 2
+theme_override_constants/separation = 100
+
+[node name="resume" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+process_mode = 3
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "RESUME"
+
+[node name="settings" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "SETTINGS"
+
+[node name="quit to title" type="Button" parent="Control/CenterContainer/VBoxContainer"]
+layout_mode = 2
+theme_override_font_sizes/font_size = 50
+text = "QUIT TO TITLE"
+
+[node name="CenterContainer2" type="CenterContainer" parent="Control"]
+visible = false
+layout_mode = 0
+offset_left = 321.0
+offset_top = 130.0
+offset_right = 713.0
+offset_bottom = 464.0
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="Control/CenterContainer2"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="GridContainer" type="GridContainer" parent="Control/CenterContainer2/PanelContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="Control/CenterContainer2/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="CheckBox" type="CheckBox" parent="Control/CenterContainer2/PanelContainer/GridContainer"]
+layout_mode = 2
+button_pressed = true
+text = "ENABLE SOUND"
+
+[node name="CheckBox2" type="CheckBox" parent="Control/CenterContainer2/PanelContainer/GridContainer"]
+layout_mode = 2
+button_pressed = true
+text = "ENABLE MUSIC"
+
+[node name="Button" type="Button" parent="Control/CenterContainer2/PanelContainer/GridContainer"]
+layout_mode = 2
+text = "RETURN"
+
+[node name="ColorRect" type="ColorRect" parent="Control/CenterContainer2/PanelContainer/GridContainer"]
+layout_mode = 2
+color = Color(0, 0, 0, 1)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("3_5d2l8")
+
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/settings" to="Control/CenterContainer2" method="show"]
+[connection signal="pressed" from="Control/CenterContainer2/PanelContainer/GridContainer/Button" to="Control/CenterContainer2" method="hide"]

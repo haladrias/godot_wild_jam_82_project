@@ -1,10 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://dr0mh468atksu"]
+[gd_scene load_steps=4 format=3 uid="uid://b558jxv78gc76"]
 
 [ext_resource type="Script" uid="uid://cfc6xcgwet7m8" path="res://scripts/title_screen.gd" id="1_fgkus"]
-[ext_resource type="AudioStream" uid="uid://d2mp0oapb4y8x" path="res://music/Nobass (1).mp3" id="2_sa3yf"]
+[ext_resource type="AudioStream" uid="uid://88mwgdnaro0n" path="res://music/Jamtitle-rework.mp3" id="2_s4lrb"]
 [ext_resource type="AudioStream" uid="uid://b572d5xk2f6p0" path="res://music/MenuNoise1.mp3" id="3_s4lrb"]
 
 [node name="Control" type="Control"]
+process_mode = 3
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
@@ -44,16 +45,16 @@ unique_name_in_owner = true
 layout_mode = 2
 text = "PLAY"
 
-[node name="option" type="Button" parent="CenterContainer/VBoxContainer"]
+[node name="settings" type="Button" parent="CenterContainer/VBoxContainer"]
 layout_mode = 2
-text = "OPTION"
+text = "SETTINGS"
 
 [node name="quit" type="Button" parent="CenterContainer/VBoxContainer"]
 unique_name_in_owner = true
 layout_mode = 2
 text = "QUIT"
 
-[node name="settings" type="CenterContainer" parent="."]
+[node name="settings_page" type="CenterContainer" parent="."]
 visible = false
 layout_mode = 1
 anchors_preset = 8
@@ -69,45 +70,46 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 
-[node name="PanelContainer" type="PanelContainer" parent="settings"]
+[node name="PanelContainer" type="PanelContainer" parent="settings_page"]
 layout_mode = 2
 mouse_filter = 2
 
-[node name="Control" type="Control" parent="settings/PanelContainer"]
+[node name="Control" type="Control" parent="settings_page/PanelContainer"]
 layout_mode = 2
 
-[node name="MarginContainer" type="MarginContainer" parent="settings/PanelContainer"]
+[node name="MarginContainer" type="MarginContainer" parent="settings_page/PanelContainer"]
 layout_mode = 2
 
-[node name="VBoxContainer" type="VBoxContainer" parent="settings/PanelContainer/MarginContainer"]
+[node name="VBoxContainer" type="VBoxContainer" parent="settings_page/PanelContainer/MarginContainer"]
 layout_mode = 2
 
-[node name="Label" type="Label" parent="settings/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Label" type="Label" parent="settings_page/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "SETTINGS"
 
-[node name="Control" type="Control" parent="settings/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="Control" type="Control" parent="settings_page/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="GridContainer" type="GridContainer" parent="settings/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="GridContainer" type="GridContainer" parent="settings_page/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 
-[node name="enable button sound" type="CheckBox" parent="settings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="enable button sound" type="CheckBox" parent="settings_page/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 button_pressed = true
+action_mode = 0
 text = "enable button sound"
 
-[node name="enable music" type="CheckBox" parent="settings/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+[node name="enable music" type="CheckBox" parent="settings_page/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
 layout_mode = 2
 button_pressed = true
 text = "enable music"
 
-[node name="return" type="Button" parent="settings/PanelContainer/MarginContainer/VBoxContainer"]
+[node name="return" type="Button" parent="settings_page/PanelContainer/MarginContainer/VBoxContainer"]
 layout_mode = 2
 text = "return"
 
 [node name="title_sceen_musc" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("2_sa3yf")
+stream = ExtResource("2_s4lrb")
 autoplay = true
 parameters/looping = true
 
@@ -115,8 +117,8 @@ parameters/looping = true
 stream = ExtResource("3_s4lrb")
 
 [connection signal="pressed" from="CenterContainer/VBoxContainer/play" to="button_sound" method="play"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/option" to="settings" method="show"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/option" to="button_sound" method="play"]
-[connection signal="pressed" from="CenterContainer/VBoxContainer/option" to="settings" method="set_mouse_filter" binds= [0]]
-[connection signal="pressed" from="settings/PanelContainer/MarginContainer/VBoxContainer/return" to="settings" method="hide"]
-[connection signal="pressed" from="settings/PanelContainer/MarginContainer/VBoxContainer/return" to="button_sound" method="play"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/settings" to="settings_page" method="show"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/settings" to="button_sound" method="play"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/settings" to="settings_page" method="set_mouse_filter" binds= [0]]
+[connection signal="pressed" from="settings_page/PanelContainer/MarginContainer/VBoxContainer/return" to="settings_page" method="hide"]
+[connection signal="pressed" from="settings_page/PanelContainer/MarginContainer/VBoxContainer/return" to="button_sound" method="play"]
