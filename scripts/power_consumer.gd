@@ -4,7 +4,7 @@ class_name PowerConsumer extends PowerConsumerComponment
 @onready var consume_area: Area2D = $ConsumeArea
 
 var battery_connected: bool = false
-
+var power_is_available: bool = false
 
 
 func _on_consume_area_area_entered(area: Area2D) -> void:
@@ -15,7 +15,7 @@ func _on_consume_area_area_entered(area: Area2D) -> void:
 		battery.global_position = global_position
 		DebugTools.update_debug_label(debug_label, str(battery.name) + " connected")
 
-		## Tell power_consumer_component to charge battery
+		## Tell power_consumer_component to drain battery
 		start_drain(battery)
 		SignalBus.battery_connected_to_consumer()
 
