@@ -1,0 +1,203 @@
+[gd_scene load_steps=9 format=3 uid="uid://b558jxv78gc76"]
+
+[ext_resource type="Script" uid="uid://cfc6xcgwet7m8" path="res://scripts/title_screen.gd" id="1_fgkus"]
+[ext_resource type="AudioStream" uid="uid://88mwgdnaro0n" path="res://music/Jamtitle-rework.mp3" id="2_s4lrb"]
+[ext_resource type="Texture2D" uid="uid://x0ju8xa7ilac" path="res://assets/tittle_img.jpeg" id="3_s4lrb"]
+[ext_resource type="AudioStream" uid="uid://b572d5xk2f6p0" path="res://music/MenuNoise1.mp3" id="4_mgrm8"]
+
+[sub_resource type="Gradient" id="Gradient_s4lrb"]
+offsets = PackedFloat32Array(0, 0.307018, 0.473684, 0.649123, 0.789474, 1)
+colors = PackedColorArray(0, 0, 0, 1, 0.307018, 0.307018, 0.307018, 1, 0.473684, 0.473684, 0.473684, 1, 0.649123, 0.649123, 0.649123, 1, 0.868985, 0.868985, 0.868985, 1, 1, 1, 1, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mgrm8"]
+gradient = SubResource("Gradient_s4lrb")
+
+[sub_resource type="Gradient" id="Gradient_dc4i4"]
+offsets = PackedFloat32Array(0.00877193, 0.280702, 0.5, 0.701754, 0.850877, 1)
+colors = PackedColorArray(1, 1, 1, 1, 0.846044, 0.846044, 0.846044, 1, 0.705194, 0.705194, 0.705194, 1, 0.494118, 0.494118, 0.494118, 0.74902, 0.231373, 0.231373, 0.231373, 0.627451, 0, 0, 0, 0)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_e54dn"]
+gradient = SubResource("Gradient_dc4i4")
+fill = 1
+fill_from = Vector2(0.493827, 0.490741)
+fill_to = Vector2(0.851852, 0.188272)
+
+[node name="Control" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_fgkus")
+
+[node name="CenterContainer" type="CenterContainer" parent="."]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -573.0
+offset_top = 116.0
+offset_right = -298.0
+offset_bottom = 315.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="CenterContainer"]
+layout_mode = 2
+
+[node name="play" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "PLAY"
+
+[node name="settings" type="Button" parent="CenterContainer/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="quit" type="Button" parent="CenterContainer/VBoxContainer"]
+unique_name_in_owner = true
+layout_mode = 2
+text = "QUIT"
+
+[node name="settings_page" type="CenterContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -93.0
+offset_top = -32.0
+offset_right = 94.0
+offset_bottom = 113.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="PanelContainer" type="PanelContainer" parent="settings_page"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="Control" type="Control" parent="settings_page/PanelContainer"]
+layout_mode = 2
+
+[node name="MarginContainer" type="MarginContainer" parent="settings_page/PanelContainer"]
+layout_mode = 2
+
+[node name="VBoxContainer" type="VBoxContainer" parent="settings_page/PanelContainer/MarginContainer"]
+layout_mode = 2
+
+[node name="Label" type="Label" parent="settings_page/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "SETTINGS"
+
+[node name="Control" type="Control" parent="settings_page/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="GridContainer" type="GridContainer" parent="settings_page/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+
+[node name="enable music" type="CheckBox" parent="settings_page/PanelContainer/MarginContainer/VBoxContainer/GridContainer"]
+layout_mode = 2
+button_pressed = true
+text = "enable music"
+
+[node name="return" type="Button" parent="settings_page/PanelContainer/MarginContainer/VBoxContainer"]
+layout_mode = 2
+text = "return"
+
+[node name="title_sceen_musc" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_s4lrb")
+autoplay = true
+parameters/looping = true
+
+[node name="TextureRect" type="TextureRect" parent="."]
+show_behind_parent = true
+layout_mode = 1
+offset_right = 2054.0
+offset_bottom = 1300.0
+scale = Vector2(0.56, 0.5)
+mouse_filter = 2
+texture = ExtResource("3_s4lrb")
+
+[node name="PointLight2D" type="PointLight2D" parent="."]
+top_level = true
+position = Vector2(818.618, 276.093)
+rotation = 1.21765
+scale = Vector2(0.575466, -3.375)
+texture = SubResource("GradientTexture1D_mgrm8")
+
+[node name="PointLight2D2" type="PointLight2D" parent="."]
+top_level = true
+position = Vector2(889, 273)
+rotation = 1.92833
+scale = Vector2(0.57958, -3.375)
+texture = SubResource("GradientTexture1D_mgrm8")
+
+[node name="PointLight2D3" type="PointLight2D" parent="."]
+top_level = true
+position = Vector2(862, 375)
+rotation = 1.92833
+scale = Vector2(3.48324, -3.43046)
+texture = SubResource("GradientTexture2D_e54dn")
+
+[node name="PointLight2D4" type="PointLight2D" parent="."]
+top_level = true
+position = Vector2(461, 420)
+rotation = 2.94459
+scale = Vector2(3.58011, -3.35426)
+texture = SubResource("GradientTexture2D_e54dn")
+
+[node name="PointLight2D5" type="PointLight2D" parent="."]
+top_level = true
+position = Vector2(354, 323)
+rotation = 2.94459
+scale = Vector2(3.58011, -3.35426)
+texture = SubResource("GradientTexture2D_e54dn")
+
+[node name="PointLight2D6" type="PointLight2D" parent="."]
+top_level = true
+position = Vector2(354, 323)
+rotation = 2.94459
+scale = Vector2(3.58011, -3.35426)
+texture = SubResource("GradientTexture2D_e54dn")
+
+[node name="PointLight2D7" type="PointLight2D" parent="."]
+top_level = true
+position = Vector2(490, 426)
+rotation = 2.94459
+scale = Vector2(3.58011, -3.35426)
+texture = SubResource("GradientTexture2D_e54dn")
+
+[node name="PointLight2D8" type="PointLight2D" parent="."]
+top_level = true
+position = Vector2(858, 375)
+rotation = 2.94459
+scale = Vector2(3.58011, -3.35426)
+texture = SubResource("GradientTexture2D_e54dn")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+color = Color(0.00392157, 0.00392157, 0.00392157, 0.419608)
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("4_mgrm8")
+
+[connection signal="pressed" from="CenterContainer/VBoxContainer/play" to="AudioStreamPlayer" method="play"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/settings" to="settings_page" method="show"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/settings" to="AudioStreamPlayer" method="play"]
+[connection signal="pressed" from="CenterContainer/VBoxContainer/settings" to="settings_page" method="set_mouse_filter" binds= [0]]
+[connection signal="pressed" from="settings_page/PanelContainer/MarginContainer/VBoxContainer/GridContainer/enable music" to="AudioStreamPlayer" method="play"]
+[connection signal="pressed" from="settings_page/PanelContainer/MarginContainer/VBoxContainer/return" to="settings_page" method="hide"]
+[connection signal="pressed" from="settings_page/PanelContainer/MarginContainer/VBoxContainer/return" to="AudioStreamPlayer" method="play"]

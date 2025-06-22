@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://7m4meb27tm0v"
+path="res://.godot/imported/Lurking in the Darkness.mp3-fb8475ded79ab06c8d5c21c85e79bc91.mp3str"
+
+[deps]
+
+source_file="res://music/Lurking in the Darkness.mp3"
+dest_files=["res://.godot/imported/Lurking in the Darkness.mp3-fb8475ded79ab06c8d5c21c85e79bc91.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

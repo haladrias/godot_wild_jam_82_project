@@ -1,8 +1,3 @@
-[gd_scene load_steps=4 format=3 uid="uid://cf2iueuvjdaio"]
-
-[ext_resource type="PackedScene" uid="uid://4s0p7nxdo61x" path="res://scenes/cave_walls.tscn" id="1_43bdd"]
-[ext_resource type="PackedScene" uid="uid://e8xxyqrt0f6m" path="res://scenes/crates.tscn" id="2_j07ih"]
-[ext_resource type="PackedScene" uid="uid://6sgch58uo3gl" path="res://scenes/pillar.tscn" id="3_orgme"]
 
 [node name="map_layout" type="Node2D"]
 
@@ -35,7 +30,7 @@ rotation = -2.35113
 [node name="RigidBody2D93" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(1738, 238)
 rotation = 1.20596
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D92" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(2143, 152)
@@ -72,7 +67,7 @@ rotation = -0.851343
 [node name="RigidBody2D5" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(86, 54)
 rotation = 0.615155
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D6" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(412, -18)
@@ -89,32 +84,32 @@ rotation = -0.303064
 [node name="RigidBody2D9" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(708, 98)
 rotation = 2.31066
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D10" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(600, 750)
 rotation = 1.53233
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D11" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(885, 1295)
 rotation = 1.53233
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D12" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(1934, 851)
 rotation = 1.53233
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D13" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(1678, 1126)
 rotation = -2.89465
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D14" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(1826, 1476)
 rotation = 2.28416
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D15" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(1900, 1757)
@@ -131,7 +126,7 @@ rotation = -2.17137
 [node name="RigidBody2D18" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(146, 1855)
 rotation = 3.13999
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D19" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(226, 2365)
@@ -160,7 +155,7 @@ rotation = 0.146795
 [node name="RigidBody2D25" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(219, 4363)
 rotation = -1.17753
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D26" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(604, 4370)
@@ -189,12 +184,12 @@ rotation = 2.68637
 [node name="RigidBody2D32" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(1499, 2695)
 rotation = 2.04421
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D33" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(1800, 2980)
 rotation = 2.52451
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D34" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(1918, 3413)
@@ -211,7 +206,7 @@ rotation = -1.90159
 [node name="RigidBody2D37" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(1931, 4611)
 rotation = -1.43687
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D38" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(2310, 4671)
@@ -232,7 +227,7 @@ rotation = 2.42226
 [node name="RigidBody2D45" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(3908, 4933)
 rotation = 1.70755
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D46" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(4299, 4864)
@@ -245,12 +240,12 @@ rotation = -2.43819
 [node name="RigidBody2D48" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(4691, 4212)
 rotation = -0.504649
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D49" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(4431, 3991)
 rotation = 1.68195
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D50" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(4013, 3953)
@@ -267,7 +262,7 @@ rotation = 1.91983
 [node name="RigidBody2D53" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(2731, 3940)
 rotation = 2.50707
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D41" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(3031, 4094)
@@ -280,7 +275,7 @@ rotation = 2.42774
 [node name="RigidBody2D43" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(2496, 3439)
 rotation = 2.76437
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D54" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(1581, 4722)
@@ -297,7 +292,7 @@ rotation = -3.04989
 [node name="RigidBody2D57" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(1022, 4044)
 rotation = 2.87557
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D58" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(2582, 3147)
@@ -342,12 +337,12 @@ rotation = -1.6494
 [node name="RigidBody2D67" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(3810, 2480)
 rotation = -1.90718
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D68" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(3367, 2628)
 rotation = -1.90718
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D69" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(2921, 2738)
@@ -376,7 +371,7 @@ rotation = -1.08239
 [node name="RigidBody2D81" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(4488, 1920)
 rotation = -1.60409
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D82" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(4670, 1779)
@@ -385,7 +380,7 @@ rotation = -2.62176
 [node name="RigidBody2D83" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(4784, 1302)
 rotation = -0.116492
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D85" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(4709, 499)
@@ -394,7 +389,7 @@ rotation = -0.908038
 [node name="RigidBody2D86" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(4503, 227)
 rotation = -0.577595
-scale = Vector2(1, 1)
+
 
 [node name="RigidBody2D87" parent="walls" instance=ExtResource("1_43bdd")]
 position = Vector2(4247, 177)

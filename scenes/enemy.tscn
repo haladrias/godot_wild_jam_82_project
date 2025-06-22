@@ -46,7 +46,8 @@ texture = ExtResource("2_smlvt")
 
 [node name="InputComponent" parent="." instance=ExtResource("3_j5nhj")]
 
-[node name="MovementComponent" parent="." instance=ExtResource("4_ujyba")]
+[node name="MovementComponent" parent="." node_paths=PackedStringArray("parent") instance=ExtResource("4_ujyba")]
+parent = NodePath("..")
 
 [node name="DebugLabel" type="RichTextLabel" parent="."]
 offset_left = -104.0

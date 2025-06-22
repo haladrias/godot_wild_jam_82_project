@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://d2mp0oapb4y8x"
+path="res://.godot/imported/Nobass (1).mp3-3ee316c4558c460ac7b2740c92b08d55.mp3str"
+
+[deps]
+
+source_file="res://music/Nobass (1).mp3"
+dest_files=["res://.godot/imported/Nobass (1).mp3-3ee316c4558c460ac7b2740c92b08d55.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
