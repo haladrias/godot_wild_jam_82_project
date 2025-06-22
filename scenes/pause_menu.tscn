@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://djs3esa737ulu"]
 
 [ext_resource type="Script" uid="uid://bt3iolhgk32k7" path="res://scripts/pause_menu.gd" id="1_n87rw"]
-[ext_resource type="AudioStream" uid="uid://b572d5xk2f6p0" path="res://music/MenuNoise1.mp3" id="3_5d2l8"]
+[ext_resource type="AudioStream" uid="uid://b572d5xk2f6p0" path="res://music/MenuNoise1.mp3" id="2_myx47"]
 
 [node name="CanvasLayer" type="CanvasLayer"]
 process_mode = 3
@@ -55,10 +55,10 @@ text = "QUIT TO TITLE"
 [node name="CenterContainer2" type="CenterContainer" parent="Control"]
 visible = false
 layout_mode = 0
-offset_left = 321.0
-offset_top = 130.0
-offset_right = 713.0
-offset_bottom = 464.0
+offset_left = -1.0
+offset_top = 83.0
+offset_right = 391.0
+offset_bottom = 417.0
 mouse_filter = 2
 
 [node name="PanelContainer" type="PanelContainer" parent="Control/CenterContainer2"]
@@ -72,12 +72,7 @@ layout_mode = 2
 layout_mode = 2
 text = "SETTINGS"
 
-[node name="CheckBox" type="CheckBox" parent="Control/CenterContainer2/PanelContainer/GridContainer"]
-layout_mode = 2
-button_pressed = true
-text = "ENABLE SOUND"
-
-[node name="CheckBox2" type="CheckBox" parent="Control/CenterContainer2/PanelContainer/GridContainer"]
+[node name="bgm_toggle" type="CheckBox" parent="Control/CenterContainer2/PanelContainer/GridContainer"]
 layout_mode = 2
 button_pressed = true
 text = "ENABLE MUSIC"
@@ -91,7 +86,12 @@ layout_mode = 2
 color = Color(0, 0, 0, 1)
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("3_5d2l8")
+stream = ExtResource("2_myx47")
 
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/resume" to="AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="Control/CenterContainer/VBoxContainer/settings" to="Control/CenterContainer2" method="show"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/settings" to="AudioStreamPlayer" method="play"]
+[connection signal="pressed" from="Control/CenterContainer/VBoxContainer/quit to title" to="AudioStreamPlayer" method="play"]
+[connection signal="pressed" from="Control/CenterContainer2/PanelContainer/GridContainer/bgm_toggle" to="AudioStreamPlayer" method="play"]
 [connection signal="pressed" from="Control/CenterContainer2/PanelContainer/GridContainer/Button" to="Control/CenterContainer2" method="hide"]
+[connection signal="pressed" from="Control/CenterContainer2/PanelContainer/GridContainer/Button" to="AudioStreamPlayer" method="play"]
