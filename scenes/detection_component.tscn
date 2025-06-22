@@ -7,6 +7,8 @@ radius = 96.0
 
 [node name="DetectionComponent" type="Node2D"]
 script = ExtResource("1_dvnaf")
+cone_resolution = 3
+cone_radius = 350.0
 
 [node name="ViewCone" type="Area2D" parent="." groups=["ViewCone"]]
 collision_layer = 128
@@ -14,7 +16,8 @@ collision_mask = 128
 monitorable = false
 
 [node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="ViewCone"]
-polygon = PackedVector2Array(0, 0, 212.132, -212.132, 267.302, -136.197, 296.307, -46.9303, 296.307, 46.9303, 267.302, 136.197, 212.132, 212.132)
+self_modulate = Color(1, 1, 1, 0.176471)
+polygon = PackedVector2Array(0, 0, 247.487, -247.487, 338.074, -90.5867, 338.074, 90.5867, 247.487, 247.487)
 
 [node name="ProximityArea" type="Area2D" parent="."]
 visible = false

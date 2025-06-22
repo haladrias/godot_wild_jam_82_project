@@ -73,6 +73,8 @@ func view_cone_detection():
 			# New detection if body is in the current list but wasn't in the previous frame's.
 			print("NEW DETECTION: ", body.name)
 			view_cone_detection_triggered.emit(body)
+			#if body.is_in_group("Enemy"):
+				#body.run_away_from_light()
 
 	# Check for lost bodies
 	for body in _bodies_in_fov:
