@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://chachoc7wo5dr"]
+
+[ext_resource type="Script" uid="uid://e7hsf45ke0u7" path="res://scripts/interactable.gd" id="1_56v82"]
+
+[node name="interactable" type="Area2D"]
+script = ExtResource("1_56v82")
+
+[connection signal="area_entered" from="." to="." method="_on_area_entered"]
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
